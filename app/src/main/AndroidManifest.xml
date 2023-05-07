@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.thinkdev.healix">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/appicon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/appicon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Helix"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".activity.SplaceActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+           >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity2"
+            android:exported="true"
+           >
+        </activity>
+
+        <activity
+            android:name=".activity.SignUpActivity"
+            android:exported="true"
+            >
+        </activity>
+
+        <activity
+            android:name=".activity.SignInActivity"
+            android:exported="true"
+            >
+        </activity>
+
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:exported="true"
+            >
+        </activity>
+
+        <activity
+            android:name=".activity.BankDetailsActivity"
+            android:exported="true"
+            >
+        </activity>
+
+        <activity
+            android:name=".activity.NewInvoiceActivity"
+            android:exported="true"
+            >
+        </activity>
+
+        <activity
+            android:name=".activity.InvoiceDetailsActivity"
+            android:exported="true"
+            >
+        </activity>
+
+        <activity
+            android:name=".activity.OtpActivity"
+            android:exported="true"
+            >
+        </activity>
+
+        <activity
+            android:name=".activity.NewServicesActivity"
+            android:exported="true"
+            >
+        </activity>
+  <activity
+            android:name=".activity.DailogeActivity"
+            android:exported="true"
+            >
+        </activity>
+
+
+        <activity
+            android:name=".activity.ForgotActivity"
+            android:exported="true"
+            >
+        </activity>
+
+
+
+    </application>
+
+</manifest>
