@@ -21,6 +21,13 @@
     <string name="date">16</string>
     <string name="month">June</string>
     <string name="day">Friday</string>
+    <string name="time">09:35 AM</string>
+    <string name="ins_company">ICEA LION</string>
+    <string name="invoice_desc">Insurance : Sanlam</string>
+    <string name="invoice_no">#INV839402304</string>
+    <string name="service_no">#S738290</string>
+    <string name="service_desc">Glucose tolerance test</string>
+    <string name="payment_msg">Confirmed payment on #INV1234567 of Ksh 25,000</string>
     <string name="transaction">Recent Transactions</string>
     <string name="previous">Previous</string>
 <array name="patienttype">

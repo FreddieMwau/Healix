@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="10dp">
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/icea"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ins_company"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="55dp"/>
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/payment_msg"
+        android:textColor="@color/light_grey"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="15dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time"
+        android:textColor="@color/light_grey"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="55dp"
+        android:textSize="9dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="15dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="70"
+        android:background="@drawable/circular_background"
+        android:progressDrawable="@drawable/circular_progressbar" />
+
+
+
+</RelativeLayout>
