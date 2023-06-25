@@ -318,7 +318,7 @@
         app:layout_constraintEnd_toStartOf="@+id/additemTv"
         android:layout_marginTop="20dp"
         android:onClick="onclick"
-        android:src="@drawable/add"></ImageView>
+        android:src="@drawable/add_icon"></ImageView>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

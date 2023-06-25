@@ -42,7 +42,6 @@
     <color name="colorOnPrimary">#ffffff</color>
     <color name="colorOnSecondary">#000000</color>
     <color name="colorOnBackground">#000000</color>
-    <color name="black">#000000</color>
     <color name="colorOnSurface">#000000</color>
     <color name="colorOnError">#ffffff</color>
 
@@ -58,6 +57,13 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
 
+<!--    New Ui Colors-->
     <color name="white">#FFFFFFFF</color>
+    <color name="whitesmoke">#F5F5F5</color>
+    <color name="blue">#546FFF</color>
+    <color name="light_blue">#C5DBFF</color>
+    <color name="light_yellow">#EEF99D</color>
+    <color name="light_grey">#7B7878</color>
+    <color name="black">#000000</color>
 
 </resources>

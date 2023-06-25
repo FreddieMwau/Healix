@@ -49,10 +49,6 @@ public class MainActivity2 extends AppCompatActivity {
                     case R.id.navigation_profile:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,profileDetailsragment).commit();
                         return true;
-                    case R.id.navigation_notifications:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,notificationFragment).commit();
-                        return true;
-
                     case R.id.navigation_graph:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,invoicesFragment).commit();
                         return true;

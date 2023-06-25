@@ -7,23 +7,15 @@
 
     <item
         android:id="@+id/navigation_graph"
-        android:icon="@drawable/graph"
+        android:icon="@drawable/graph_icon"
         android:title="@string/title_report" />
-
-
-
-
-    <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/bell"
-        android:title="@string/title_notifications" />
 
     <item
         android:id="@+id/navigation_profile"
         android:title="@string/title_profile"
         android:iconTint="@color/white"
+        android:icon="@drawable/library_icon"/>
 
-        android:icon="@drawable/icon_profile"/>
 
 
 </menu>

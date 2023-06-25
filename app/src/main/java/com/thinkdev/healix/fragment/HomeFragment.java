@@ -1,43 +1,33 @@
 package com.thinkdev.healix.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.anychart.chart.common.listener.Event;
-import com.anychart.chart.common.listener.ListenersInterface;
-import com.anychart.enums.Align;
-import com.anychart.enums.LegendLayout;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.thinkdev.healix.R;
-import com.thinkdev.healix.adapter.InvoicesAdapter;
-import com.thinkdev.healix.adapter.NotificationAdapter;
 import com.thinkdev.healix.databinding.FragmentHomeBinding;
 import com.thinkdev.healix.model.InvoicesData;
-import com.thinkdev.healix.model.NotificationData;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.anychart.AnyChart;
-import com.anychart.AnyChartView;
-import com.anychart.charts.Pie;
-
-import com.anychart.chart.common.dataentry.DataEntry;
-import com.anychart.chart.common.dataentry.ValueDataEntry;
 
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private List<InvoicesData> data =  new ArrayList<>();
-    AnyChartView pieChart;
+    BarChart barChart;
 
     @Override
     public View onCreateView(
@@ -52,48 +42,31 @@ public class HomeFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        pieChart = view.findViewById(R.id.any_pie_chart_view);
-        Pie pie = AnyChart.pie();
 
-        List<DataEntry> pieData = new ArrayList<>();
-        pieData.add(new ValueDataEntry("Approved", 52000));
-        pieData.add(new ValueDataEntry("Paid", 42000));
-        pieData.add(new ValueDataEntry("Pending", 32000));
+        barChart = view.findViewById(R.id.bar_chart);
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
 
-        pie.data(pieData);
-        pie.title("Doctors summary payment chart (in Ksh)");
-        pie.title().fontSize(14);
-        pie.labels().position("inside");
+        for (int i = 1; i<=7; i++){
+            float value = (float) (i*10.0);
+            BarEntry barEntry = new BarEntry(i, value);
+            barEntries.add(barEntry);
+        }
 
-
-        pie.legend().title().enabled(true);
-        pie.legend().title().fontSize(12);
-        pie.legend().title()
-                        .text("Payment Status")
-                        .padding(0d,0d,10d,0d);
-
-        pie.legend()
-                .position("center-bottom")
-                .itemsLayout(LegendLayout.HORIZONTAL_EXPANDABLE)
-                .align(Align.CENTER);
-        pieChart.setChart(pie);
-
-
-        data.clear();
-        data.add(new InvoicesData("Confirmed payment of amount Ksh 12,000 from Karen Hospital...",
-                "Insurance","Sanlam Insurance","INV 001","Paid","04/03/2023 11:34 am"));
-
-
-
-        data.add(new InvoicesData("INV 002 status has been updated and the payment process is .....",
-                "Insurance","Jubillee Insurance","INV 002","Approved","02/03/2023 03:34 am"));
-
-
-
-        InvoicesAdapter adapter = new InvoicesAdapter(data);
-        binding.rcyinvoices.setHasFixedSize(true);
-        binding.rcyinvoices.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        binding.rcyinvoices.setAdapter(adapter);
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Weekly Payments");
+        barDataSet.setColors(
+            new int[]
+                {
+                        ContextCompat.getColor(getContext(), R.color.light_blue),
+                        ContextCompat.getColor(getContext(), R.color.light_blue),
+                        ContextCompat.getColor(getContext(), R.color.light_blue),
+                        ContextCompat.getColor(getContext(), R.color.light_blue),
+                        ContextCompat.getColor(getContext(), R.color.light_blue),
+                        ContextCompat.getColor(getContext(), R.color.light_blue),
+                        ContextCompat.getColor(getContext(), R.color.light_yellow)
+                });
+        barDataSet.setDrawValues(false);
+        barChart.setData(new BarData(barDataSet));
+        barChart.animateY(5000);
     }
 
     @Override

@@ -3,10 +3,10 @@
     <string name="title_home">Home</string>
     <string name="title_payment">Payment</string>
     <string name="title_graph">Graph</string>
-    <string name="title_report">Report</string>
+    <string name="title_report">Analytics</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_discover">Discover</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_profile">Library</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_new_cart">New Cart</string>
     <string name="title_activity_main2">MainActivity2</string>
@@ -14,6 +14,10 @@
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
+    <string name="salutation">Good Morning</string>
+    <string name="total_amount">Total amount paid</string>
+    <string name="total">170,000</string>
+    <string name="currency">Ksh</string>
     <string name="previous">Previous</string>
 <array name="patienttype">
     <item>Select patient type</item>
