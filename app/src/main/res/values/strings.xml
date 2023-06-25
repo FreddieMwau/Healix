@@ -18,6 +18,10 @@
     <string name="total_amount">Total amount paid</string>
     <string name="total">170,000</string>
     <string name="currency">Ksh</string>
+    <string name="date">16</string>
+    <string name="month">June</string>
+    <string name="day">Friday</string>
+    <string name="transaction">Recent Transactions</string>
     <string name="previous">Previous</string>
 <array name="patienttype">
     <item>Select patient type</item>

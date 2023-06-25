@@ -181,7 +181,7 @@
                             android:textColor="@color/white" />
                     </RadioGroup>
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
@@ -192,12 +192,26 @@
                             android:layout_height="300dp"
                             android:id="@+id/bar_chart"/>
 
-                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transaction"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/blue"
+                android:textStyle="bold"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/transactionsRecycler"/>
 
         </LinearLayout>
 
