@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:padding="10dp">
+    android:padding="5dp">
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:src="@drawable/icea"
+        android:id="@+id/paymentIcon"
         android:layout_centerVertical="true"/>
 
     <TextView
@@ -17,26 +18,29 @@
         android:layout_height="wrap_content"
         android:text="@string/ins_company"
         android:textColor="@color/black"
+        android:id="@+id/paymentTitle"
         android:textStyle="bold"
         android:layout_marginStart="55dp"/>
     <TextView
-        android:layout_width="250dp"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
         android:text="@string/payment_msg"
         android:textColor="@color/light_grey"
         android:layout_marginStart="55dp"
+        android:id="@+id/paymentDescription"
         android:layout_marginTop="15dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/time"
+        android:id="@+id/paymentTime"
         android:textColor="@color/light_grey"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="45dp"
         android:textSize="9dp"/>
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/paymentProgressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="50dp"
         android:layout_height="50dp"

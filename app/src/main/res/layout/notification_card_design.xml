@@ -7,6 +7,7 @@
     android:padding="10dp">
 
     <ImageView
+        android:id="@+id/notificationIcon"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:src="@drawable/icea"
@@ -17,6 +18,7 @@
         android:layout_height="wrap_content"
         android:text="@string/invoice_no"
         android:textColor="@color/black"
+        android:id="@+id/notificationTitle"
         android:textStyle="bold"
         android:layout_marginStart="55dp"/>
     <TextView
@@ -24,12 +26,14 @@
         android:layout_height="wrap_content"
         android:text="@string/invoice_desc"
         android:textColor="@color/light_grey"
+        android:id="@+id/notificationDescription"
         android:layout_marginStart="55dp"
         android:layout_marginTop="22dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/time"
+        android:id="@+id/notificationTime"
         android:textColor="@color/light_grey"
         android:layout_marginStart="55dp"
         android:layout_marginTop="45dp"

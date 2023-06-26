@@ -22,6 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:text="@string/date"
+                android:id="@+id/notificationDate"
                 android:textStyle="bold"
                 android:textColor="@color/blue"
                 android:textSize="22dp"
@@ -31,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="43dp"
                 android:text="@string/day"
+                android:id="@+id/notificationDay"
                 android:textColor="@color/blue"
                 android:textSize="12dp"
                 android:layout_marginTop="18dp"/>
@@ -39,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="78dp"
                 android:text="@string/month"
+                android:id="@+id/notificationMonth"
                 android:textColor="@color/blue"
                 android:textSize="12dp"
                 android:layout_marginTop="18dp"/>
@@ -53,7 +56,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nested_recycler"
+            android:id="@+id/notification_nested_recycler"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="5dp"/>
 
