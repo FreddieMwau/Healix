@@ -2,20 +2,18 @@ package com.thinkdev.healix.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.navigation.NavigationBarView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.navigation.NavigationBarView;
+import com.thinkdev.healix.R;
+import com.thinkdev.healix.databinding.ActivityMain2Binding;
 import com.thinkdev.healix.fragment.HomeFragment;
 import com.thinkdev.healix.fragment.InvoicesFragment;
 import com.thinkdev.healix.fragment.NotificationFragment;
 import com.thinkdev.healix.fragment.ProfileDetailsragment;
-import com.thinkdev.healix.R;
-import com.thinkdev.healix.databinding.ActivityMain2Binding;
 
 
 public class MainActivity2 extends AppCompatActivity {
@@ -58,13 +56,4 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
     }
-
-    public void onclick(View view) {
-
-        Intent i = new Intent(MainActivity2.this, NewInvoiceActivity.class);
-
-        startActivity(i);
-    }
-
-
 }
