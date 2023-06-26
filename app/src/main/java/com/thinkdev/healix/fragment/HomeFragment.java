@@ -71,6 +71,9 @@ public class HomeFragment extends Fragment {
         barDataSet.setDrawValues(false);
         barChart.setData(new BarData(barDataSet));
         barChart.animateY(5000);
+        barChart.getLegend().setEnabled(false);
+        barChart.getDescription().setEnabled(false);
+        barChart.getAxisRight().setEnabled(false);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         transactionAdapter = new TransactionAdapter(TransactionItemList());
