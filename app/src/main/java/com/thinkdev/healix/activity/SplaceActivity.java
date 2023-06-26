@@ -27,7 +27,8 @@ public class SplaceActivity extends AppCompatActivity {
 
             public void run() {
 
-                Intent i = new Intent(SplaceActivity.this, SignInActivity.class);
+                Intent i = new Intent(SplaceActivity.this, MainActivity2.class);
+//                Intent i = new Intent(SplaceActivity.this, SignInActivity.class);
 
                 startActivity(i);
 
