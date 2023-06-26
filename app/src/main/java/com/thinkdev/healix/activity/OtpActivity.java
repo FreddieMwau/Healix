@@ -25,9 +25,9 @@ public class OtpActivity extends AppCompatActivity {
     }
     public void onclick(View view) {
 
-        Intent i = new Intent(OtpActivity.this, ProfileActivity.class);
+//        Intent i = new Intent(OtpActivity.this, ProfileActivity.class);
 
-        startActivity(i);
+//        startActivity(i);
     }
 
 

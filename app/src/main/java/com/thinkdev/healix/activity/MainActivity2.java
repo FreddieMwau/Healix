@@ -1,9 +1,7 @@
 package com.thinkdev.healix.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,9 +9,9 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.thinkdev.healix.R;
 import com.thinkdev.healix.databinding.ActivityMain2Binding;
 import com.thinkdev.healix.fragment.HomeFragment;
-import com.thinkdev.healix.fragment.InvoicesFragment;
+import com.thinkdev.healix.fragment.AnalyticsFragment;
 import com.thinkdev.healix.fragment.NotificationFragment;
-import com.thinkdev.healix.fragment.ProfileDetailsragment;
+import com.thinkdev.healix.fragment.LibraryFragment;
 
 
 public class MainActivity2 extends AppCompatActivity {
@@ -30,8 +28,8 @@ public class MainActivity2 extends AppCompatActivity {
 
         HomeFragment homeFragment = new HomeFragment();
        NotificationFragment notificationFragment = new NotificationFragment();
-       InvoicesFragment invoicesFragment = new InvoicesFragment();
-       ProfileDetailsragment profileDetailsragment = new ProfileDetailsragment();
+       AnalyticsFragment analyticsFragment = new AnalyticsFragment();
+       LibraryFragment libraryFragment = new LibraryFragment();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
 
@@ -45,10 +43,10 @@ public class MainActivity2 extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
                         return true;
                     case R.id.navigation_profile:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,profileDetailsragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, libraryFragment).commit();
                         return true;
                     case R.id.navigation_graph:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,invoicesFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, analyticsFragment).commit();
                         return true;
                 }
 

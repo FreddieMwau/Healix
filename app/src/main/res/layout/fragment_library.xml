@@ -1,384 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_vertical"
-    app:layout_anchorGravity="center_vertical"
-    android:background="#FFFFFF"
-    tools:context=".activity.ProfileActivity">
+    android:orientation="vertical"
+    android:background="@color/whitesmoke"
+    tools:context=".fragment.LibraryFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp"
+        android:background="@drawable/library_bg">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileImg"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/profile_pic"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Library"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/notifications"
+                app:tint="@color/white" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/add_icon"
+                app:tint="@color/white" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="30dp"
         app:layout_constraintTop_toTopOf="parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="300dp"
-                android:text="Personal Details"
-                android:textColor="@color/green"
-                android:id="@+id/mainhdrImg"
-                android:scaleType="centerCrop"
-                android:src="@drawable/banner"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-
-
-                ></ImageView>
-
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileImg"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="-50dp"
-                android:src="@drawable/profileimg"
-                app:civ_border_color="#FF000000"
-               android:layout_marginStart="20dp"
-               app:layout_constraintStart_toStartOf="parent"
-                app:civ_border_width="2dp"
-                app:layout_constraintTop_toBottomOf="@+id/mainhdrImg"
-             >
-
-            </de.hdodenhof.circleimageview.CircleImageView>
-
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Prof. John Doe"
-                android:textSize="30dp"
-                android:textColor="@color/green"
-                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:background="@drawable/radio_button_bg"
+                    android:button="@null"
+                    android:checked="false"
+                    android:padding="10dp"
+                    android:text="Company"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/blue" />
+
+                <RadioButton
+                    android:id="@+id/radioButton1M"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:background="@drawable/radio_button_bg"
+                    android:button="@null"
+                    android:checked="false"
+                    android:padding="10dp"
+                    android:text="Paid"
+                    android:layout_marginEnd="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue" />
+
+                <RadioButton
+                    android:id="@+id/radioButton6M"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:background="@drawable/radio_button_bg"
+                    android:button="@null"
+                    android:checked="false"
+                    android:padding="10dp"
+                    android:text="Approved"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/blue" />
+
+                <RadioButton
+                    android:id="@+id/radioButton1Y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:background="@drawable/radio_button_bg"
+                    android:button="@null"
+                    android:checked="false"
+                    android:padding="10dp"
+                    android:text="Pending"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/blue" />
+
+            </RadioGroup>
+
+            <LinearLayout
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:id="@+id/profileNameTv"
-                app:layout_constraintTop_toBottomOf="@+id/profileImg"
-                >
-
-            </TextView>
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="H78327823"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorOnSecondary"
-                android:layout_marginStart="20dp"
-                android:id="@+id/namesubTv"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profileNameTv"
-                >
+                android:orientation="horizontal">
 
-            </TextView>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/recents" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu tortor est. Nulla tempus sapien non sem mattis maximus. Nulla nec ligula velit. Suspendisse ut justo lobortis, convallis sapien nec, congue metus. Nunc quis mauris elit."
-                android:textSize="15dp"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/colorOnSecondary"
-                android:layout_marginStart="20dp"
-                android:id="@+id/decTv"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/namesubTv"
-                >
-
-            </TextView>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/personalTv"
-                android:text="Personal Details"
-                android:textColor="@color/green"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/decTv">
-
-            </TextView>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/personalDetails"
-                android:padding="10dp"
-                android:layout_margin="10dp"
-                android:elevation="6dp"
-                android:background="@drawable/corner_buttonoutline"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/personalTv"
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:padding="5dp"
-                        android:src="@drawable/identification"></ImageView>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="KMPDC Registration Number"
-                            android:textSize="10dp"
-
-                            ></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15dp"
-                            android:textColor="@color/colorOnSecondary"
-                            android:text="KMPDC Registration Number"></TextView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:padding="5dp"
-                        android:src="@drawable/calendar2"
-                        ></ImageView>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Joined"
-                            android:textSize="10dp"
-
-                            ></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15dp"
-                            android:textColor="@color/colorOnSecondary"
-                            android:text="August 2023"></TextView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:padding="5dp"
-                        android:src="@drawable/email"></ImageView>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Email Address"
-                            android:textSize="10dp"
-
-                            ></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15dp"
-                            android:textColor="@color/colorOnSecondary"
-                            android:text="johndoe@gmail.com"></TextView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
+                    android:text="Recents"
+                    android:textSize="13sp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/light_grey"/>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/bankTv"
-                android:text="Bank Details"
-                android:textColor="@color/green"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/personalDetails">
-
-            </TextView>
-
-
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/bankDetails"
-                android:layout_margin="10dp"
-                android:padding="10dp"
-                android:elevation="6dp"
-                android:background="@drawable/corner_buttonoutline"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bankTv"
-                >
+                android:id="@+id/libraryRecycler"
+                android:layout_marginTop="10dp"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/onlinebanking"></ImageView>
+        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Bank Account"
-                            android:textSize="10dp"
-
-                            ></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15dp"
-                            android:textColor="@color/colorOnSecondary"
-                            android:text="0110123456789"></TextView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:padding="5dp"
-                        android:src="@drawable/balance"></ImageView>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Bank Name"
-                            android:textSize="10dp"
-
-                            ></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15dp"
-                            android:textColor="@color/colorOnSecondary"
-                            android:text="Co-operative Bank"></TextView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:padding="5dp"
-                        android:src="@drawable/invoice"></ImageView>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="KRA Pin"
-                            android:textSize="10dp"
-
-                            ></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15dp"
-                            android:textColor="@color/colorOnSecondary"
-                            android:text="A1234567890M"></TextView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

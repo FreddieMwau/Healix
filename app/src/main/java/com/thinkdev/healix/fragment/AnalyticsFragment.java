@@ -18,15 +18,15 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.thinkdev.healix.R;
 import com.thinkdev.healix.adapter.TransactionAdapter;
-import com.thinkdev.healix.databinding.FragmentInvoicesBinding;
+import com.thinkdev.healix.databinding.FragmentAnalyticsBinding;
 import com.thinkdev.healix.model.TransactionChildModel;
 import com.thinkdev.healix.model.TransactionalModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InvoicesFragment extends Fragment {
-    private FragmentInvoicesBinding binding;
+public class AnalyticsFragment extends Fragment {
+    private FragmentAnalyticsBinding binding;
     PieChart pieChart;
     private TransactionAdapter transactionAdapter;
     RecyclerView transactionRecycler;
@@ -37,7 +37,7 @@ public class InvoicesFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentInvoicesBinding.inflate(inflater, container, false);
+        binding = FragmentAnalyticsBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
