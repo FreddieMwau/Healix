@@ -1,9 +1,12 @@
 package com.thinkdev.healix.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -11,6 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thinkdev.healix.R;
+import com.thinkdev.healix.activity.InvoiceDetailsActivity;
+import com.thinkdev.healix.activity.NewInvoiceActivity;
+import com.thinkdev.healix.activity.ProfileActivity;
 import com.thinkdev.healix.adapter.TransactionAdapter;
 import com.thinkdev.healix.databinding.FragmentLibraryBinding;
 import com.thinkdev.healix.model.TransactionChildModel;
@@ -23,6 +29,7 @@ public class LibraryFragment extends Fragment {
     private FragmentLibraryBinding binding;
     private TransactionAdapter transactionAdapter;
     RecyclerView transactionRecycler;
+    ImageView profile;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -37,11 +44,22 @@ public class LibraryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         transactionRecycler = view.findViewById(R.id.libraryRecycler);
+        profile = view.findViewById(R.id.profileImg);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         transactionAdapter = new TransactionAdapter(TransactionItemList());
         transactionRecycler.setAdapter(transactionAdapter);
         transactionRecycler.setLayoutManager(layoutManager);
+
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent i = new Intent(getContext(), ProfileActivity.class);
+//                startActivity(i);
+                Toast.makeText(getContext(), "Profile page still in development. Coming Soon.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private List<TransactionalModel> TransactionItemList() {
@@ -73,5 +91,4 @@ public class LibraryFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
 }

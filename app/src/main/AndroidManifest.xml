@@ -12,10 +12,15 @@
         android:theme="@style/Theme.Helix"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".activity.Notification"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.SplaceActivity"
             android:exported="true"
-            android:label="@string/app_name"
-           >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,66 +29,34 @@
         </activity>
         <activity
             android:name=".activity.MainActivity2"
-            android:exported="true"
-           >
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".activity.SignUpActivity"
-            android:exported="true"
-            >
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".activity.SignInActivity"
-            android:exported="true"
-            >
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".activity.BankDetailsActivity"
-            android:exported="true"
-            >
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".activity.NewInvoiceActivity"
-            android:exported="true"
-            >
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".activity.InvoiceDetailsActivity"
-            android:exported="true"
-            >
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".activity.OtpActivity"
-            android:exported="true"
-            >
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".activity.NewServicesActivity"
-            android:exported="true"
-            >
-        </activity>
-  <activity
+            android:exported="true" />
+        <activity
             android:name=".activity.DailogeActivity"
-            android:exported="true"
-            >
-        </activity>
-
-
+            android:exported="true" />
         <activity
             android:name=".activity.ForgotActivity"
-            android:exported="true"
-            >
-        </activity>
-
-
-
+            android:exported="true" />
     </application>
 
 </manifest>

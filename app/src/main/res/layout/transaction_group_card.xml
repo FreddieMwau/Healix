@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -19,54 +20,65 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="@string/date"
-                android:id="@+id/transactionDate"
-                android:textStyle="bold"
-                android:textColor="@color/blue"
-                android:textSize="24dp"
-                android:layout_marginTop="10dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="45dp"
-                android:text="@string/day"
-                android:id="@+id/transactionDay"
-                android:textColor="@color/blue"
-                android:textSize="12dp"
-                android:layout_marginTop="20dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="95dp"
-                android:text="@string/month"
-                android:id="@+id/transactionMonth"
-                android:textColor="@color/blue"
-                android:textSize="12dp"
-                android:layout_marginTop="20dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="95dp"
-                android:text="@string/currency"
-                android:textColor="@color/blue"
-                android:textSize="12dp"
-                android:layout_marginTop="20dp"/>
-            <TextView
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/date"
+                    android:id="@+id/transactionDate"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"
+                    android:textSize="24sp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/day"
+                    android:id="@+id/transactionDay"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/blue"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/month"
+                    android:id="@+id/transactionMonth"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/blue"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="20dp"
-                android:text="@string/total"
-                android:id="@+id/transactionAmount"
-                android:textStyle="bold"
-                android:textColor="@color/blue"
-                android:textSize="20dp"
-                android:layout_marginTop="15dp"/>
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/currency"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="@color/blue"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total"
+                    android:textAlignment="textEnd"
+                    android:id="@+id/transactionAmount"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"
+                    android:textSize="20sp"
+                    android:layout_marginTop="15dp"/>
+            </LinearLayout>
+
         </RelativeLayout>
 
         <View

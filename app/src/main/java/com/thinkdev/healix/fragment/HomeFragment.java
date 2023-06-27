@@ -1,9 +1,11 @@
 package com.thinkdev.healix.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -16,6 +18,7 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.thinkdev.healix.R;
+import com.thinkdev.healix.activity.Notification;
 import com.thinkdev.healix.adapter.TransactionAdapter;
 import com.thinkdev.healix.databinding.FragmentHomeBinding;
 import com.thinkdev.healix.model.TransactionChildModel;
@@ -30,6 +33,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private TransactionAdapter transactionAdapter;
     RecyclerView transactionRecycler;
+    ImageView notification;
     BarChart barChart;
 
     @Override
@@ -49,6 +53,7 @@ public class HomeFragment extends Fragment {
         barChart = view.findViewById(R.id.bar_chart);
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         transactionRecycler = view.findViewById(R.id.transactionsRecycler);
+        notification = view.findViewById(R.id.dashNotification);
 
         for (int i = 1; i<=7; i++){
             float value = (float) (i*10.0);
@@ -79,6 +84,15 @@ public class HomeFragment extends Fragment {
         transactionAdapter = new TransactionAdapter(TransactionItemList());
         transactionRecycler.setAdapter(transactionAdapter);
         transactionRecycler.setLayoutManager(layoutManager);
+
+
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), Notification.class);
+                startActivity(i);
+            }
+        });
     }
 
     private List<TransactionalModel> TransactionItemList() {

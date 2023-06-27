@@ -38,6 +38,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true">
                     <ImageView
+                        android:id="@+id/dashNotification"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/notifications"/>

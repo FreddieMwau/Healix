@@ -13,31 +13,34 @@
         android:src="@drawable/icea"
         android:layout_centerVertical="true"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/invoice_no"
-        android:textColor="@color/black"
-        android:id="@+id/notificationTitle"
-        android:textStyle="bold"
-        android:layout_marginStart="55dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/invoice_desc"
-        android:textColor="@color/light_grey"
-        android:id="@+id/notificationDescription"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="22dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/time"
-        android:id="@+id/notificationTime"
-        android:textColor="@color/light_grey"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="45dp"
-        android:textSize="9dp"/>
+        android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/invoice_no"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:id="@+id/notificationTitle"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/invoice_desc"
+            android:textColor="@color/light_grey"
+            android:id="@+id/notificationDescription"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time"
+            android:id="@+id/notificationTime"
+            android:textColor="@color/light_grey"
+            android:textSize="9sp"/>
+
+    </LinearLayout>
 
 </RelativeLayout>
