@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/whitesmoke"
     tools:context=".activity.ProfileActivity">
 
     <ImageView
@@ -90,32 +91,5 @@
             android:src="@drawable/profile_pic"/>
 
     </androidx.cardview.widget.CardView>
-
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:tabMode="scrollable"
-        app:tabIndicatorColor="@color/blue"
-        app:tabSelectedTextColor="@color/black"
-        android:layout_marginTop="5dp"
-        android:id="@+id/libraryTabLayout">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/details"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/card"/>
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/whitesmoke"
-        android:id="@+id/libraryViewPager"/>
 
 </LinearLayout>

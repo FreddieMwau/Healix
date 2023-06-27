@@ -55,9 +55,8 @@ public class LibraryFragment extends Fragment {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i = new Intent(getContext(), ProfileActivity.class);
-//                startActivity(i);
-                Toast.makeText(getContext(), "Profile page still in development. Coming Soon.", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getContext(), ProfileActivity.class);
+                startActivity(i);
             }
         });
     }
