@@ -19,7 +19,7 @@
         app:tint="@color/blue" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="350dp"
+        android:layout_width="335dp"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="10dp"
@@ -42,8 +42,8 @@
 
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@drawable/edit"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
@@ -81,8 +81,7 @@
         android:layout_gravity="end"
         android:layout_marginTop="-130dp"
         app:cardElevation="10dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="40dp">
+        android:layout_marginEnd="20dp">
 
         <ImageView
             android:layout_width="match_parent"
@@ -91,5 +90,31 @@
             android:src="@drawable/profile_pic"/>
 
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/whitesmoke"
+        android:id="@+id/profileTabLayout"
+        android:layout_marginTop="5dp"
+        app:tabSelectedTextColor="@color/black"
+        app:tabIndicatorColor="@color/blue">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/profileViewPager"/>
 
 </LinearLayout>

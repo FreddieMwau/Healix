@@ -39,6 +39,8 @@
     <string name="kmpdc_desc">#km74637892098</string>
     <string name="speciality_desc">Critical Care Medicine</string>
     <string name="kra_desc">#A7589302093N</string>
+    <string name="bank_name">Equity Bank</string>
+    <string name="bank_number">0110837388237</string>
     <string name="date_joined_desc">14, June 2023</string>
     <array name="patienttype">
         <item>Select patient type</item>
