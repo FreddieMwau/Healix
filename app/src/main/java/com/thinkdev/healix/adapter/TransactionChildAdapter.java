@@ -5,12 +5,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thinkdev.healix.R;
+import com.thinkdev.healix.interfaces.TransactionInterface;
 import com.thinkdev.healix.model.TransactionChildModel;
 
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.List;
 public class TransactionChildAdapter extends RecyclerView.Adapter<TransactionChildAdapter.TransactionChildViewHolder> {
 
     private List<TransactionChildModel> childModelList;
+    private TransactionInterface transactionInterface;
 
     public TransactionChildAdapter(List<TransactionChildModel> childModelList) {
         this.childModelList = childModelList;
@@ -45,7 +48,11 @@ public class TransactionChildAdapter extends RecyclerView.Adapter<TransactionChi
         return childModelList.size();
     }
 
-    public class TransactionChildViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(TransactionInterface transactionInterface) {
+        this.transactionInterface = transactionInterface;
+    }
+
+    public class TransactionChildViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView icon;
         TextView title, description, time;
@@ -58,6 +65,18 @@ public class TransactionChildAdapter extends RecyclerView.Adapter<TransactionChi
             description = itemView.findViewById(R.id.paymentDescription);
             time = itemView.findViewById(R.id.paymentTime);
             progress = itemView.findViewById(R.id.paymentProgressBar);
+            itemView.setOnClickListener(this);
+        }
+
+
+        @Override
+        public void onClick(View v) {
+            if (transactionInterface != null){
+                int pos = getAdapterPosition();
+                if (pos != RecyclerView.NO_POSITION){
+                    transactionInterface.onItemClicked(pos);
+                }
+            }
         }
     }
 }

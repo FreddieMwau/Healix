@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Helix"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".activity.InvoiceDetails"
+            android:exported="false" />
+        <activity
             android:name=".activity.Notification"
             android:exported="false" />
         <activity
@@ -41,9 +44,6 @@
             android:exported="true" />
         <activity
             android:name=".activity.NewInvoiceActivity"
-            android:exported="true" />
-        <activity
-            android:name=".activity.InvoiceDetailsActivity"
             android:exported="true" />
         <activity
             android:name=".activity.OtpActivity"

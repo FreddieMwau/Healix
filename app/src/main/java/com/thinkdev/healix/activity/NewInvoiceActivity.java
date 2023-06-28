@@ -23,7 +23,7 @@ public class NewInvoiceActivity extends AppCompatActivity {
     }
     public void onclick(View view) {
 
-        Intent i = new Intent(NewInvoiceActivity.this, InvoiceDetailsActivity.class);
+        Intent i = new Intent(NewInvoiceActivity.this, InvoiceDetails.class);
 
         startActivity(i);
     }

@@ -18,9 +18,11 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.thinkdev.healix.R;
+import com.thinkdev.healix.activity.InvoiceDetails;
 import com.thinkdev.healix.activity.Notification;
 import com.thinkdev.healix.adapter.TransactionAdapter;
 import com.thinkdev.healix.databinding.FragmentHomeBinding;
+import com.thinkdev.healix.interfaces.TransactionInterface;
 import com.thinkdev.healix.model.TransactionChildModel;
 import com.thinkdev.healix.model.TransactionalModel;
 
@@ -28,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements TransactionInterface{
 
     private FragmentHomeBinding binding;
     private TransactionAdapter transactionAdapter;
@@ -81,7 +83,7 @@ public class HomeFragment extends Fragment {
         barChart.getAxisRight().setEnabled(false);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        transactionAdapter = new TransactionAdapter(TransactionItemList());
+        transactionAdapter = new TransactionAdapter(TransactionItemList(), getContext(), this);
         transactionRecycler.setAdapter(transactionAdapter);
         transactionRecycler.setLayoutManager(layoutManager);
 
@@ -123,4 +125,9 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onItemClicked(int position) {
+        Intent i = new Intent(requireContext(), InvoiceDetails.class);
+        startActivity(i);
+    }
 }

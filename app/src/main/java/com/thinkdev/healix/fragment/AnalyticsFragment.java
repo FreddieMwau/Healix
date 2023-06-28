@@ -1,5 +1,6 @@
 package com.thinkdev.healix.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,15 +18,17 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.thinkdev.healix.R;
+import com.thinkdev.healix.activity.InvoiceDetails;
 import com.thinkdev.healix.adapter.TransactionAdapter;
 import com.thinkdev.healix.databinding.FragmentAnalyticsBinding;
+import com.thinkdev.healix.interfaces.TransactionInterface;
 import com.thinkdev.healix.model.TransactionChildModel;
 import com.thinkdev.healix.model.TransactionalModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnalyticsFragment extends Fragment {
+public class AnalyticsFragment extends Fragment implements TransactionInterface {
     private FragmentAnalyticsBinding binding;
     PieChart pieChart;
     private TransactionAdapter transactionAdapter;
@@ -75,7 +78,7 @@ public class AnalyticsFragment extends Fragment {
         pieChart.animate();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        transactionAdapter = new TransactionAdapter(TransactionItemList());
+        transactionAdapter = new TransactionAdapter(TransactionItemList(), getContext(), this);
         transactionRecycler.setAdapter(transactionAdapter);
         transactionRecycler.setLayoutManager(layoutManager);
     }
@@ -108,4 +111,9 @@ public class AnalyticsFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onItemClicked(int position) {
+        Intent i = new Intent(requireContext(), InvoiceDetails.class);
+        startActivity(i);
+    }
 }

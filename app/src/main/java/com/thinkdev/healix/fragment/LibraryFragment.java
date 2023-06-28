@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,18 +13,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thinkdev.healix.R;
-import com.thinkdev.healix.activity.InvoiceDetailsActivity;
-import com.thinkdev.healix.activity.NewInvoiceActivity;
+import com.thinkdev.healix.activity.InvoiceDetails;
 import com.thinkdev.healix.activity.ProfileActivity;
 import com.thinkdev.healix.adapter.TransactionAdapter;
 import com.thinkdev.healix.databinding.FragmentLibraryBinding;
+import com.thinkdev.healix.interfaces.TransactionInterface;
 import com.thinkdev.healix.model.TransactionChildModel;
 import com.thinkdev.healix.model.TransactionalModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LibraryFragment extends Fragment {
+public class LibraryFragment extends Fragment implements TransactionInterface {
     private FragmentLibraryBinding binding;
     private TransactionAdapter transactionAdapter;
     RecyclerView transactionRecycler;
@@ -47,7 +46,7 @@ public class LibraryFragment extends Fragment {
         profile = view.findViewById(R.id.profileImg);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        transactionAdapter = new TransactionAdapter(TransactionItemList());
+        transactionAdapter = new TransactionAdapter(TransactionItemList(), getContext(), this);
         transactionRecycler.setAdapter(transactionAdapter);
         transactionRecycler.setLayoutManager(layoutManager);
 
@@ -89,5 +88,11 @@ public class LibraryFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        Intent i = new Intent(requireContext(), InvoiceDetails.class);
+        startActivity(i);
     }
 }
