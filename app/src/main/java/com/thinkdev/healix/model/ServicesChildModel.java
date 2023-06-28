@@ -1,11 +1,11 @@
 package com.thinkdev.healix.model;
 
-public class ServicesModel {
+public class ServicesChildModel {
 
     private int icon;
     private String title, description, amount, time;
 
-    public ServicesModel(int icon, String title, String description, String amount, String time) {
+    public ServicesChildModel(int icon, String title, String description, String amount, String time) {
         this.icon = icon;
         this.title = title;
         this.description = description;
