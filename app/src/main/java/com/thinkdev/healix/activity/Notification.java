@@ -1,6 +1,7 @@
 package com.thinkdev.healix.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -55,5 +56,14 @@ public class Notification extends AppCompatActivity {
         childModels.add(new NotificationChildModel("AAR", "#INV633473849 status updated to approved.", "01:25 PM", R.drawable.aar));
 
         return childModels;
+    }
+
+    public void onBackIconClicked(View view) {
+        onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

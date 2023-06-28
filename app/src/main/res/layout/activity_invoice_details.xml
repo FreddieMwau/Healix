@@ -25,6 +25,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/back"
+                android:onClick="onBackIconClicked"
                 app:tint="@color/white" />
 
             <TextView

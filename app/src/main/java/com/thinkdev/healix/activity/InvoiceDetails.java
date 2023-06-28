@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 import com.thinkdev.healix.R;
@@ -56,5 +57,14 @@ public class InvoiceDetails extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void onBackIconClicked(View view) {
+        onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

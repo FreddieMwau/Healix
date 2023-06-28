@@ -1,6 +1,7 @@
 package com.thinkdev.healix.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -51,5 +52,14 @@ public class ProfileActivity extends AppCompatActivity {
                 tabLayout.getTabAt(position).select();
             }
         });
+    }
+
+    public void onBackIconClicked(View view) {
+        onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

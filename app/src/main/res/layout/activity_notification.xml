@@ -12,6 +12,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@drawable/back"
+        android:onClick="onBackIconClicked"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
