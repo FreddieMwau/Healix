@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Helix"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".activity.Company"
+            android:exported="false" />
+        <activity
             android:name=".activity.InvoiceDetails"
             android:exported="false" />
         <activity

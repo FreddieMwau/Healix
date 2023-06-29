@@ -1,27 +1,22 @@
 package com.thinkdev.healix.fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.thinkdev.healix.R;
 import com.thinkdev.healix.adapter.ServiceAdapter;
-import com.thinkdev.healix.adapter.TransactionAdapter;
-import com.thinkdev.healix.databinding.FragmentHomeBinding;
 import com.thinkdev.healix.databinding.FragmentInvoiceServicesBinding;
 import com.thinkdev.healix.interfaces.TransactionInterface;
 import com.thinkdev.healix.model.ServicesChildModel;
 import com.thinkdev.healix.model.ServicesModel;
-import com.thinkdev.healix.model.TransactionChildModel;
-import com.thinkdev.healix.model.TransactionalModel;
 
 import java.util.ArrayList;
 import java.util.List;

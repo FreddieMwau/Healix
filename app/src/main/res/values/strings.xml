@@ -57,6 +57,10 @@
     <string name="datetime">12:34 AM 09 Jun 23</string>
     <string name="services">Services</string>
     <string name="payments">Payments</string>
+    <string name="select_ins">Select Insurance Company</string>
+    <string name="history">Payment History</string>
+    <string name="invoices">Invoices</string>
+
     <array name="patienttype">
         <item>Select patient type</item>
         <item>patient A</item>

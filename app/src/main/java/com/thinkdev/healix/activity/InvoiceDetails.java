@@ -3,6 +3,7 @@ package com.thinkdev.healix.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -61,6 +62,11 @@ public class InvoiceDetails extends AppCompatActivity {
 
     public void onBackIconClicked(View view) {
         onBackPressed();
+    }
+
+    public void onInsuranceClicked(View view) {
+        Intent i = new Intent(getApplicationContext(), Company.class);
+        startActivity(i);
     }
 
     @Override
