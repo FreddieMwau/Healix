@@ -1,11 +1,19 @@
 package com.thinkdev.healix.activity;
 
+import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 import com.thinkdev.healix.R;
@@ -19,7 +27,6 @@ public class InvoiceDetails extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 viewPager;
     InvoiceTabAdapter tabAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,5 +79,34 @@ public class InvoiceDetails extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    public void onEditIconClicked(View view) {
+        Toast.makeText(getApplicationContext(), "Edit Invoice clicked", Toast.LENGTH_SHORT).show();
+    }
+
+    public void onDeleteIconClicked(View view) {
+        Toast.makeText(getApplicationContext(), "Delete Invoice clicked", Toast.LENGTH_SHORT).show();
+    }
+
+    public void onAddIconClicked(View view) {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.service_bottom_sheet);
+
+        LinearLayout image = dialog.findViewById(R.id.serviceLayout);
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Add Service Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.BottomDialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 }

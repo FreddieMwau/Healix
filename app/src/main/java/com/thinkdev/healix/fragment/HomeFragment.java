@@ -1,11 +1,18 @@
 package com.thinkdev.healix.fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -35,7 +42,7 @@ public class HomeFragment extends Fragment implements TransactionInterface{
     private FragmentHomeBinding binding;
     private TransactionAdapter transactionAdapter;
     RecyclerView transactionRecycler;
-    ImageView notification;
+    ImageView notification, add;
     BarChart barChart;
 
     @Override
@@ -56,6 +63,7 @@ public class HomeFragment extends Fragment implements TransactionInterface{
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         transactionRecycler = view.findViewById(R.id.transactionsRecycler);
         notification = view.findViewById(R.id.dashNotification);
+        add = view.findViewById(R.id.dashAddIcon);
 
         for (int i = 1; i<=7; i++){
             float value = (float) (i*10.0);
@@ -67,11 +75,6 @@ public class HomeFragment extends Fragment implements TransactionInterface{
         barDataSet.setColors(
             new int[]
                 {
-                        ContextCompat.getColor(getContext(), R.color.light_blue),
-                        ContextCompat.getColor(getContext(), R.color.light_blue),
-                        ContextCompat.getColor(getContext(), R.color.light_blue),
-                        ContextCompat.getColor(getContext(), R.color.light_blue),
-                        ContextCompat.getColor(getContext(), R.color.light_blue),
                         ContextCompat.getColor(getContext(), R.color.light_blue),
                         ContextCompat.getColor(getContext(), R.color.light_yellow)
                 });
@@ -87,7 +90,6 @@ public class HomeFragment extends Fragment implements TransactionInterface{
         transactionRecycler.setAdapter(transactionAdapter);
         transactionRecycler.setLayoutManager(layoutManager);
 
-
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +97,34 @@ public class HomeFragment extends Fragment implements TransactionInterface{
                 startActivity(i);
             }
         });
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showBottomSheetDialog();
+            }
+        });
+    }
+
+    private void showBottomSheetDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.invoice_service_bottom_sheet);
+
+        LinearLayout invoice = dialog.findViewById(R.id.invoiceLayout);
+
+        invoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(requireContext(), "Add Invoice Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.BottomDialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
     private List<TransactionalModel> TransactionItemList() {
@@ -130,4 +160,5 @@ public class HomeFragment extends Fragment implements TransactionInterface{
         Intent i = new Intent(requireContext(), InvoiceDetails.class);
         startActivity(i);
     }
+
 }

@@ -46,18 +46,21 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
             <ImageView
+                android:id="@+id/libraryNotificationIcon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="5dp"
                 android:src="@drawable/notifications"
                 app:tint="@color/white" />
             <ImageView
+                android:id="@+id/libraryAddIcon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="5dp"
                 android:src="@drawable/add_icon"
                 app:tint="@color/white" />
             <ImageView
+                android:id="@+id/librarySearchIcon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/search" />

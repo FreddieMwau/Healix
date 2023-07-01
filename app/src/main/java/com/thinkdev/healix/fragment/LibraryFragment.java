@@ -1,11 +1,18 @@
 package com.thinkdev.healix.fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.thinkdev.healix.R;
 import com.thinkdev.healix.activity.InvoiceDetails;
+import com.thinkdev.healix.activity.Notification;
 import com.thinkdev.healix.activity.ProfileActivity;
 import com.thinkdev.healix.adapter.TransactionAdapter;
 import com.thinkdev.healix.databinding.FragmentLibraryBinding;
@@ -28,7 +36,7 @@ public class LibraryFragment extends Fragment implements TransactionInterface {
     private FragmentLibraryBinding binding;
     private TransactionAdapter transactionAdapter;
     RecyclerView transactionRecycler;
-    ImageView profile;
+    ImageView profile, search, notification, add;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -44,6 +52,9 @@ public class LibraryFragment extends Fragment implements TransactionInterface {
         super.onViewCreated(view, savedInstanceState);
         transactionRecycler = view.findViewById(R.id.libraryRecycler);
         profile = view.findViewById(R.id.profileImg);
+        notification = view.findViewById(R.id.libraryNotificationIcon);
+        add = view.findViewById(R.id.libraryAddIcon);
+        search = view.findViewById(R.id.librarySearchIcon);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         transactionAdapter = new TransactionAdapter(TransactionItemList(), getContext(), this);
@@ -58,6 +69,43 @@ public class LibraryFragment extends Fragment implements TransactionInterface {
                 startActivity(i);
             }
         });
+
+
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), Notification.class);
+                startActivity(i);
+            }
+        });
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shotBottomSheetDialog();
+            }
+        });
+    }
+
+    private void shotBottomSheetDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.invoice_service_bottom_sheet);
+
+        LinearLayout invoice = dialog.findViewById(R.id.invoiceLayout);
+
+        invoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(requireContext(), "Add Invoice Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.BottomDialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
     private List<TransactionalModel> TransactionItemList() {
