@@ -1,67 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_vertical"
-    app:layout_anchorGravity="center_vertical"
-    android:background="@color/colorSurface"
+    android:orientation="vertical"
+    android:background="@color/whitesmoke"
     tools:context=".activity.OtpActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:padding="10dp"
-        android:text="Sign Up Onboarding"
-        android:textColor="@color/green"
-        android:textSize="30dp"
-       android:id="@+id/mainhdrText"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-
-        ></TextView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:padding="10dp"
-        android:text="O.T.P"
-        android:id="@+id/otptext"
-        android:textColor="@color/green"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainhdrText"
-
-
-        ></TextView>
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:padding="10dp"
-        android:id="@+id/otpSubHeading"
-        android:text="Enter the OTP code sent to your phone number"
-        android:textColor="@color/green"
-        android:textSize="20dp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otptext"
+        android:background="@color/blue"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:padding="10dp"
+            android:text="O.T.P"
+            android:id="@+id/otptext"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainhdrText"/>
 
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:padding="10dp"
+            android:id="@+id/otpSubHeading"
+            android:text="Enter the OTP code sent to your phone number"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otptext"/>
 
-        ></TextView>
-
-
-
+    </LinearLayout>
 
     <com.kevinschildhorn.otpview.OTPView
         android:id="@+id/otp_view"
@@ -71,13 +53,9 @@
         android:autofillHints=""
         android:importantForAutofill="no"
         android:inputType="phone"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otpSubHeading"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="center"
         app:otp_backgroundImage="@color/grey"
-        app:otp_cursorColor="@color/black"
+        app:otp_cursorColor="@color/blue"
         app:otp_filledBackgroundImage="@color/grey"
         app:otp_filledTextSize="24sp"
         app:otp_highlightedBackgroundImage="@color/grey"
@@ -98,21 +76,15 @@
         android:id="@+id/submitBtn"
         android:text="Next"
         android:textStyle="bold"
-        android:textSize="15dp"
+        android:layout_gravity="center"
+        android:textSize="18sp"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
         android:textAllCaps="false"
         android:textColor="@color/colorBackground"
         android:background="@drawable/corner_button"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="@color/blue"
         android:layout_margin="10dp"
-        android:onClick="onclick"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otp_view"
+        android:onClick="onclick"/>
 
-    >
-
-    </androidx.appcompat.widget.AppCompatButton>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

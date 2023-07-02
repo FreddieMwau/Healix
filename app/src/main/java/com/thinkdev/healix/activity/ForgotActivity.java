@@ -7,7 +7,6 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.thinkdev.healix.databinding.ActivityForgotBinding;
-import com.thinkdev.healix.databinding.ActivitySigninBinding;
 
 public class ForgotActivity extends AppCompatActivity {
 
@@ -20,10 +19,10 @@ public class ForgotActivity extends AppCompatActivity {
 
         binding = ActivityForgotBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
     }
 
-
-
+    public void onForgotBtnClicked(View view) {
+        Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+        startActivity(i);
+    }
 }

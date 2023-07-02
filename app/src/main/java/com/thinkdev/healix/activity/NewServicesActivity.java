@@ -22,7 +22,7 @@ public class NewServicesActivity extends AppCompatActivity {
 
     }
     public void onclick(View view) {
-        Intent i = new Intent(NewServicesActivity.this, InvoiceDetailsActivity.class);
+        Intent i = new Intent(NewServicesActivity.this, InvoiceDetails.class);
 
         startActivity(i);
     }

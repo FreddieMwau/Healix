@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="10dp">
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/icea"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/invoice_no"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="55dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/invoice_desc"
+        android:textColor="@color/light_grey"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="22dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time"
+        android:textColor="@color/light_grey"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="45dp"
+        android:textSize="9dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/currency"
+        android:layout_alignParentEnd="true"
+        android:textSize="14dp"
+        android:layout_marginEnd="98dp"
+        android:layout_centerVertical="true"
+        android:textColor="@color/light_grey"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
+
+
+
+</RelativeLayout>
