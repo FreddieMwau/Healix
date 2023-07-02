@@ -1,43 +1,50 @@
 package com.thinkdev.healix.fragment;
 
+import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.anychart.chart.common.listener.Event;
-import com.anychart.chart.common.listener.ListenersInterface;
-import com.anychart.enums.Align;
-import com.anychart.enums.LegendLayout;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.thinkdev.healix.R;
-import com.thinkdev.healix.adapter.InvoicesAdapter;
-import com.thinkdev.healix.adapter.NotificationAdapter;
+import com.thinkdev.healix.activity.InvoiceDetails;
+import com.thinkdev.healix.activity.NewInvoiceActivity;
+import com.thinkdev.healix.activity.Notification;
+import com.thinkdev.healix.adapter.TransactionAdapter;
 import com.thinkdev.healix.databinding.FragmentHomeBinding;
-import com.thinkdev.healix.model.InvoicesData;
-import com.thinkdev.healix.model.NotificationData;
+import com.thinkdev.healix.interfaces.TransactionInterface;
+import com.thinkdev.healix.model.TransactionChildModel;
+import com.thinkdev.healix.model.TransactionalModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.anychart.AnyChart;
-import com.anychart.AnyChartView;
-import com.anychart.charts.Pie;
 
-import com.anychart.chart.common.dataentry.DataEntry;
-import com.anychart.chart.common.dataentry.ValueDataEntry;
-
-
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements TransactionInterface{
 
     private FragmentHomeBinding binding;
-    private List<InvoicesData> data =  new ArrayList<>();
-    AnyChartView pieChart;
+    private TransactionAdapter transactionAdapter;
+    RecyclerView transactionRecycler;
+    ImageView notification, add;
+    BarChart barChart;
 
     @Override
     public View onCreateView(
@@ -52,54 +59,108 @@ public class HomeFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        pieChart = view.findViewById(R.id.any_pie_chart_view);
-        Pie pie = AnyChart.pie();
 
-        List<DataEntry> pieData = new ArrayList<>();
-        pieData.add(new ValueDataEntry("Approved", 52000));
-        pieData.add(new ValueDataEntry("Paid", 42000));
-        pieData.add(new ValueDataEntry("Pending", 32000));
+        barChart = view.findViewById(R.id.bar_chart);
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
+        transactionRecycler = view.findViewById(R.id.transactionsRecycler);
+        notification = view.findViewById(R.id.dashNotification);
+        add = view.findViewById(R.id.dashAddIcon);
 
-        pie.data(pieData);
-        pie.title("Doctors summary payment chart (in Ksh)");
-        pie.title().fontSize(14);
-        pie.labels().position("inside");
+        for (int i = 1; i<=7; i++){
+            float value = (float) (i*10.0);
+            BarEntry barEntry = new BarEntry(i, value);
+            barEntries.add(barEntry);
+        }
 
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Weekly Payments");
+        barDataSet.setColors(
+            new int[]
+                {
+                        ContextCompat.getColor(getContext(), R.color.light_blue),
+                        ContextCompat.getColor(getContext(), R.color.light_yellow)
+                });
+        barDataSet.setDrawValues(false);
+        barChart.setData(new BarData(barDataSet));
+        barChart.animateY(5000);
+        barChart.getLegend().setEnabled(false);
+        barChart.getDescription().setEnabled(false);
+        barChart.getAxisRight().setEnabled(false);
 
-        pie.legend().title().enabled(true);
-        pie.legend().title().fontSize(12);
-        pie.legend().title()
-                        .text("Payment Status")
-                        .padding(0d,0d,10d,0d);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        transactionAdapter = new TransactionAdapter(TransactionItemList(), getContext(), this);
+        transactionRecycler.setAdapter(transactionAdapter);
+        transactionRecycler.setLayoutManager(layoutManager);
 
-        pie.legend()
-                .position("center-bottom")
-                .itemsLayout(LegendLayout.HORIZONTAL_EXPANDABLE)
-                .align(Align.CENTER);
-        pieChart.setChart(pie);
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), Notification.class);
+                startActivity(i);
+            }
+        });
 
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showBottomSheetDialog();
+            }
+        });
+    }
 
-        data.clear();
-        data.add(new InvoicesData("Confirmed payment of amount Ksh 12,000 from Karen Hospital...",
-                "Insurance","Sanlam Insurance","INV 001","Paid","04/03/2023 11:34 am"));
+    private void showBottomSheetDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.invoice_service_bottom_sheet);
 
+        LinearLayout invoice = dialog.findViewById(R.id.invoiceLayout);
 
+        invoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), NewInvoiceActivity.class);
+                startActivity(i);
+            }
+        });
 
-        data.add(new InvoicesData("INV 002 status has been updated and the payment process is .....",
-                "Insurance","Jubillee Insurance","INV 002","Approved","02/03/2023 03:34 am"));
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.BottomDialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
 
+    private List<TransactionalModel> TransactionItemList() {
+        List<TransactionalModel> transactionalModelList = new ArrayList<>();
 
+        TransactionalModel transactionalModel = new TransactionalModel("25", "Tuesday", "June", "54,000", TransactionChildList());
+        transactionalModelList.add(transactionalModel);
 
-        InvoicesAdapter adapter = new InvoicesAdapter(data);
-        binding.rcyinvoices.setHasFixedSize(true);
-        binding.rcyinvoices.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        binding.rcyinvoices.setAdapter(adapter);
+        return  transactionalModelList;
+    }
+
+    private List<TransactionChildModel> TransactionChildList() {
+        List<TransactionChildModel> childModelList = new ArrayList<>();
+
+        childModelList.add(new TransactionChildModel(R.drawable.sanlam, 56, "Sanlam", "Confirmed payment on #INV3672891 of Ksh 34,000", "12:38 AM"));
+        childModelList.add(new TransactionChildModel(R.drawable.icea, 34, "ICEA LION", "Confirmed payment on #INV3674324 of Ksh 93,000", "06:19 AM"));
+        childModelList.add(new TransactionChildModel(R.drawable.madison, 80, "Madison", "Confirmed payment on #INV3672891 of Ksh 40,000", "09:45 AM"));
+        childModelList.add(new TransactionChildModel(R.drawable.aar, 67, "AAR", "Confirmed payment on #INV3672891 of Ksh 76,000", "12:05 PM"));
+        childModelList.add(new TransactionChildModel(R.drawable.pioneer, 38, "Pioneer", "Confirmed payment on #INV3672891 of Ksh 29,000", "03:55 PM"));
+        childModelList.add(new TransactionChildModel(R.drawable.sanlam, 73, "Sanlam", "Confirmed payment on #INV3672891 of Ksh 57,000", "05:30 PM"));
+
+        return childModelList;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        Intent i = new Intent(requireContext(), InvoiceDetails.class);
+        startActivity(i);
     }
 
 }

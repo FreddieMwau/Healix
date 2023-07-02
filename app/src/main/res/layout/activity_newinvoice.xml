@@ -1,76 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_vertical"
-    app:layout_anchorGravity="center_vertical"
+    android:orientation="vertical"
     android:background="@color/colorSurface"
     tools:context=".activity.SignUpActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
-        android:padding="5dp"
-        android:text="New invoice"
-        android:textColor="@color/green"
-        android:textSize="25dp"
-       android:id="@+id/mainHeading"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-
-        ></TextView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/blue"
+        android:orientation="vertical">
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainHeading">
         <TextView
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:padding="5dp"
+            android:text="New invoice"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:id="@+id/mainHeading"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:id="@+id/topTextHdr"
             android:text="Please provide the necessary details to fill out this invoice"
             android:textStyle="bold"
-            android:textSize="15dp"
-            android:textColor="@color/green"
-            android:layout_margin="10dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"/>
 
-
-            >
-
-        </TextView>
+    </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/firstnameTextInput"
             android:hint="Hospital Name"
-            app:layout_constraintTop_toBottomOf="@+id/topTextHdr"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textColorHint="@color/yellow"
-            android:layout_margin="10dp"
+            android:textColorHint="@color/light_blue"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/FirstNameEdittext"
-                android:textColor="@color/black"
-
-              />
+                android:textColor="@color/black"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,15 +65,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/emailTextInput"
             android:hint="Insurance"
-            android:textColorHint="@color/yellow"
-            app:layout_constraintTop_toBottomOf="@+id/firstnameTextInput"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-
-
-            android:layout_margin="10dp"
-
-
+            android:textColorHint="@color/light_blue"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -107,28 +88,22 @@
             android:hint="Patient Type"
             android:padding="20dp"
             android:entries="@array/patienttype"
-            android:textColorHint="@color/yellow"
             android:textColor="@color/black"
-
             android:background="@drawable/corner_buttonoutline"
-            app:layout_constraintTop_toBottomOf="@+id/emailTextInput"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="10dp">
+            android:textColorHint="@color/light_blue"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"/>
 
-
-
-        </Spinner>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/phoneTextInput"
             android:hint="Claim Form Number"
-            android:textColorHint="@color/yellow"
-            app:layout_constraintTop_toBottomOf="@+id/idTextInput"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="10dp"
+            android:textColorHint="@color/light_blue"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -145,15 +120,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/passTextInput"
             android:hint="Pre-authorization Number"
-            android:textColorHint="@color/yellow"
-            app:layout_constraintTop_toBottomOf="@+id/phoneTextInput"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-
-
-            android:layout_margin="10dp"
-
-
+            android:textColorHint="@color/light_blue"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -179,20 +149,13 @@
             android:paddingEnd="30dp"
             android:textAllCaps="false"
             android:textColor="@color/colorBackground"
-            android:backgroundTint="@color/green"
+            android:backgroundTint="@color/blue"
             android:background="@drawable/corner_button"
-
-            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
             android:onClick="onclick"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passTextInput"
+            app:layout_constraintTop_toBottomOf="@+id/passTextInput"/>
 
-            >
-
-        </androidx.appcompat.widget.AppCompatButton>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
