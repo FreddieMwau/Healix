@@ -98,7 +98,8 @@ public class InvoiceDetails extends AppCompatActivity {
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Add Service Clicked", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), NewServicesActivity.class);
+                startActivity(i);
             }
         });
 

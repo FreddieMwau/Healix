@@ -26,6 +26,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.thinkdev.healix.R;
 import com.thinkdev.healix.activity.InvoiceDetails;
+import com.thinkdev.healix.activity.NewInvoiceActivity;
 import com.thinkdev.healix.activity.Notification;
 import com.thinkdev.healix.adapter.TransactionAdapter;
 import com.thinkdev.healix.databinding.FragmentHomeBinding;
@@ -116,7 +117,8 @@ public class HomeFragment extends Fragment implements TransactionInterface{
         invoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(requireContext(), "Add Invoice Clicked", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getContext(), NewInvoiceActivity.class);
+                startActivity(i);
             }
         });
 
