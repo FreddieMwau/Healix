@@ -73,6 +73,7 @@ public class TransactionChildAdapter extends RecyclerView.Adapter<TransactionChi
         public void onClick(View v) {
             if (transactionInterface != null){
                 int pos = getAdapterPosition();
+                System.out.println("Transaction position >>>> " + pos);
                 if (pos != RecyclerView.NO_POSITION){
                     transactionInterface.onItemClicked(pos);
                 }

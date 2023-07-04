@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thinkdev.healix.R;
-import com.thinkdev.healix.interfaces.TransactionInterface;
+import com.thinkdev.healix.interfaces.ServiceInterface;
 import com.thinkdev.healix.model.ServicesChildModel;
 
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
 public class ServicesChildAdapter extends RecyclerView.Adapter<ServicesChildAdapter.ServicesViewHolder> {
 
     private List<ServicesChildModel> servicesChildModels;
-    private TransactionInterface transactionInterface;
+    private ServiceInterface serviceInterface;
 
     public ServicesChildAdapter(List<ServicesChildModel> servicesChildModels) {
         this.servicesChildModels = servicesChildModels;
@@ -33,7 +33,12 @@ public class ServicesChildAdapter extends RecyclerView.Adapter<ServicesChildAdap
 
     @Override
     public void onBindViewHolder(@NonNull ServicesChildAdapter.ServicesViewHolder holder, int position) {
-
+        ServicesChildModel childModel = servicesChildModels.get(position);
+        holder.title.setText(childModel.getTitle());
+        holder.description.setText(childModel.getDescription());
+        holder.amount.setText(childModel.getAmount());
+        holder.time.setText(childModel.getTime());
+        holder.icon.setImageResource(childModel.getIcon());
     }
 
     @Override
@@ -41,8 +46,8 @@ public class ServicesChildAdapter extends RecyclerView.Adapter<ServicesChildAdap
         return servicesChildModels.size();
     }
 
-    public void setOnItemClickListener(TransactionInterface transactionInterface) {
-        this.transactionInterface = transactionInterface;
+    public void setOnItemClickListener(ServiceInterface serviceInterface) {
+        this.serviceInterface = serviceInterface;
     }
 
     public class ServicesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -58,13 +63,13 @@ public class ServicesChildAdapter extends RecyclerView.Adapter<ServicesChildAdap
             time = itemView.findViewById(R.id.serviceTime);
         }
 
-
         @Override
         public void onClick(View v) {
-            if (transactionInterface != null){
+            if (serviceInterface != null){
                 int pos = getAdapterPosition();
+                System.out.println("Services position >>>> " + pos);
                 if (pos != RecyclerView.NO_POSITION){
-                    transactionInterface.onItemClicked(pos);
+                    serviceInterface.onItemClicked(pos);
                 }
             }
         }
