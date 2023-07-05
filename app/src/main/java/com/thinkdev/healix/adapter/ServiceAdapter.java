@@ -46,8 +46,8 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
 
         layoutManager.setInitialPrefetchItemCount(servicesModel.getChildModelList().size());
 
-        ServicesChildAdapter childAdapter = new ServicesChildAdapter(servicesModel.getChildModelList());
-        childAdapter.setOnItemClickListener(serviceInterface);
+        ServiceChildAdapter childAdapter = new ServiceChildAdapter(servicesModel.getChildModelList());
+        childAdapter.setOnServiceClickListener(serviceInterface);
         holder.transactionRecycler.setLayoutManager(layoutManager);
         holder.transactionRecycler.setAdapter(childAdapter);
         holder.transactionRecycler.setRecycledViewPool(viewPool);

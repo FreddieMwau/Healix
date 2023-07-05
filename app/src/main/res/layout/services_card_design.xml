@@ -11,9 +11,8 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:id="@+id/serviceIcon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/service_icon"
             android:layout_centerVertical="true"/>
 

@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.thinkdev.healix.R;
 import com.thinkdev.healix.adapter.ServiceAdapter;
 import com.thinkdev.healix.databinding.FragmentInvoiceServicesBinding;
+import com.thinkdev.healix.interfaces.ServiceInterface;
 import com.thinkdev.healix.interfaces.TransactionInterface;
 import com.thinkdev.healix.model.ServicesChildModel;
 import com.thinkdev.healix.model.ServicesModel;
@@ -27,7 +28,7 @@ import com.thinkdev.healix.model.ServicesModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InvoiceServicesFragment extends Fragment implements TransactionInterface{
+public class InvoiceServicesFragment extends Fragment implements ServiceInterface {
     private FragmentInvoiceServicesBinding binding;
     private ServiceAdapter serviceAdapter;
     RecyclerView serviceRecycler;
@@ -36,7 +37,7 @@ public class InvoiceServicesFragment extends Fragment implements TransactionInte
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentInvoiceServicesBinding.inflate(inflater, container, false);
-        System.out.println("Got to this fragment");
+        System.out.println("Got to the invoice service fragment");
         return binding.getRoot();
     }
 
@@ -63,11 +64,11 @@ public class InvoiceServicesFragment extends Fragment implements TransactionInte
     private List<ServicesChildModel> ServicesChildList(){
         List<ServicesChildModel> childModelList = new ArrayList<>();
 
-        childModelList.add(new ServicesChildModel(R.drawable.service_icon, "#S647398", "Blood count", "3,200", "01:32 PM"));
-        childModelList.add(new ServicesChildModel(R.drawable.service_icon, "#S647398", "Blood count", "3,200", "01:32 PM"));
-        childModelList.add(new ServicesChildModel(R.drawable.service_icon, "#S647398", "Blood count", "3,200", "01:32 PM"));
-        childModelList.add(new ServicesChildModel(R.drawable.service_icon, "#S647398", "Blood count", "3,200", "01:32 PM"));
-        childModelList.add(new ServicesChildModel(R.drawable.service_icon, "#S647398", "Blood count", "3,200", "01:32 PM"));
+        childModelList.add(new ServicesChildModel("#S647398", "Blood count", "3,200", "01:32 PM"));
+        childModelList.add(new ServicesChildModel("#S647398", "Blood count", "3,200", "01:32 PM"));
+        childModelList.add(new ServicesChildModel("#S647398", "Blood count", "3,200", "01:32 PM"));
+        childModelList.add(new ServicesChildModel("#S647398", "Blood count", "3,200", "01:32 PM"));
+        childModelList.add(new ServicesChildModel("#S647398", "Blood count", "3,200", "01:32 PM"));
 
         return childModelList;
     }
@@ -97,7 +98,6 @@ public class InvoiceServicesFragment extends Fragment implements TransactionInte
 
     @Override
     public void onItemClicked(int position) {
-        System.out.println("CLicked and logged this");
-        Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_SHORT).show();
+        Toast.makeText(requireContext(), "Clicked service task", Toast.LENGTH_SHORT).show();
     }
 }
