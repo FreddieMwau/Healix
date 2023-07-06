@@ -18,7 +18,6 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.google.android.material.tabs.TabLayout;
 import com.thinkdev.healix.R;
-import com.thinkdev.healix.adapter.CompanyTabAdapter;
 import com.thinkdev.healix.databinding.ActivityCompanyBinding;
 
 import java.util.ArrayList;
@@ -31,9 +30,7 @@ public class Company extends AppCompatActivity {
     AutoCompleteTextView companyTextView;
     ArrayAdapter<String> companyAdapter;
     PieChart pieChart;
-    TabLayout tabLayout;
-    ViewPager2 viewPager;
-    CompanyTabAdapter companyTabAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +40,6 @@ public class Company extends AppCompatActivity {
 
         companyTextView = findViewById(R.id.auto_company_txt);
         pieChart = findViewById(R.id.insurancePieChart);
-        tabLayout = findViewById(R.id.companyTabLayout);
-        viewPager = findViewById(R.id.companyViewPager);
-
-        viewPager.setAdapter(companyTabAdapter);
-
-        companyAdapter = new ArrayAdapter<String>(this, R.layout.insurance_list, insurances);
-        companyTextView.setAdapter(companyAdapter);
 
 
         companyTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -87,33 +77,6 @@ public class Company extends AppCompatActivity {
         pieChart.setCenterTextColor(R.color.blue);
         pieChart.setCenterTextSize(15f);
         pieChart.animate();
-
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-
-        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                Objects.requireNonNull(tabLayout.getTabAt(position)).select();
-            }
-        });
     }
 
     public void onBackIconClicked(View view) {

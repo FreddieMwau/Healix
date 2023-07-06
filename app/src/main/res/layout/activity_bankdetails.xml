@@ -126,7 +126,7 @@
         android:id="@+id/subscriptionLyt">
 
         <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/bankDetailsRadioGroupBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -137,9 +137,9 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/radio_button_background"
+                android:background="@drawable/library_radio_group_selector"
                 android:button="@null"
-                android:checked="true"
+                android:checked="false"
                 android:padding="10dp"
                 android:text="Free Trial"
                 android:textStyle="bold"
@@ -149,9 +149,9 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/radio_button_background"
+                android:background="@drawable/library_radio_group_selector"
                 android:button="@null"
-                android:checked="true"
+                android:checked="false"
                 android:padding="10dp"
                 android:text="Annual"
                 android:textStyle="bold"

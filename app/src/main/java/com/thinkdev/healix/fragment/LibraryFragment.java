@@ -12,9 +12,12 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,6 +41,7 @@ public class LibraryFragment extends Fragment implements TransactionInterface {
     private TransactionAdapter transactionAdapter;
     RecyclerView transactionRecycler;
     ImageView profile, search, notification, add;
+    RadioGroup libraryRadioGroupBtn;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -56,6 +60,10 @@ public class LibraryFragment extends Fragment implements TransactionInterface {
         notification = view.findViewById(R.id.libraryNotificationIcon);
         add = view.findViewById(R.id.libraryAddIcon);
         search = view.findViewById(R.id.librarySearchIcon);
+        libraryRadioGroupBtn = view.findViewById(R.id.libraryRadioGroupBtn);
+
+        final int checkedColor = ContextCompat.getColor(requireContext() ,R.color.white);
+        final int uncheckedColor = ContextCompat.getColor(requireContext(), R.color.blue);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         transactionAdapter = new TransactionAdapter(TransactionItemList(), getContext(), this);
@@ -84,6 +92,22 @@ public class LibraryFragment extends Fragment implements TransactionInterface {
             @Override
             public void onClick(View v) {
                 shotBottomSheetDialog();
+            }
+        });
+
+        libraryRadioGroupBtn.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int count = group.getChildCount();
+                for (int i = 0; i < count; i++){
+                    RadioButton radioButton = (RadioButton) group.getChildAt(i);
+                    if (radioButton.getId() == checkedId){
+                        Toast.makeText(requireContext(), radioButton.getText() + " clicked", Toast.LENGTH_SHORT).show();
+                        radioButton.setTextColor(checkedColor);
+                    } else {
+                        radioButton.setTextColor(uncheckedColor);
+                    }
+                }
             }
         });
     }

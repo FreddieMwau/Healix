@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,7 +20,6 @@ import com.thinkdev.healix.R;
 import com.thinkdev.healix.adapter.ServiceAdapter;
 import com.thinkdev.healix.databinding.FragmentInvoiceServicesBinding;
 import com.thinkdev.healix.interfaces.ServiceInterface;
-import com.thinkdev.healix.interfaces.TransactionInterface;
 import com.thinkdev.healix.model.ServicesChildModel;
 import com.thinkdev.healix.model.ServicesModel;
 

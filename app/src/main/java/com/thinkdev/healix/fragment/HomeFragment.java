@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,6 +47,7 @@ public class HomeFragment extends Fragment implements TransactionInterface{
     RecyclerView transactionRecycler;
     ImageView notification, add;
     BarChart barChart;
+    RadioGroup homeRadioGroupBtn;
 
     @Override
     public View onCreateView(
@@ -65,6 +68,10 @@ public class HomeFragment extends Fragment implements TransactionInterface{
         transactionRecycler = view.findViewById(R.id.transactionsRecycler);
         notification = view.findViewById(R.id.dashNotification);
         add = view.findViewById(R.id.dashAddIcon);
+        homeRadioGroupBtn = view.findViewById(R.id.homeRadioGroupBtn);
+
+        final int checkedColor = ContextCompat.getColor(requireContext() ,R.color.blue);
+        final int uncheckedColor = ContextCompat.getColor(requireContext(), R.color.white);
 
         for (int i = 1; i<=7; i++){
             float value = (float) (i*10.0);
@@ -103,6 +110,22 @@ public class HomeFragment extends Fragment implements TransactionInterface{
             @Override
             public void onClick(View v) {
                 showBottomSheetDialog();
+            }
+        });
+
+        homeRadioGroupBtn.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int count = group.getChildCount();
+                for (int i = 0; i < count; i++){
+                    RadioButton radioButton = (RadioButton) group.getChildAt(i);
+                    if (radioButton.getId() == checkedId){
+                        Toast.makeText(requireContext(), radioButton.getText() + " clicked", Toast.LENGTH_SHORT).show();
+                        radioButton.setTextColor(checkedColor);
+                    } else {
+                        radioButton.setTextColor(uncheckedColor);
+                    }
+                }
             }
         });
     }
@@ -162,5 +185,4 @@ public class HomeFragment extends Fragment implements TransactionInterface{
         Intent i = new Intent(requireContext(), InvoiceDetails.class);
         startActivity(i);
     }
-
 }
