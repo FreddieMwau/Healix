@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ProfileActivity">
+    tools:context=".activity.Notification">
 
     <ImageView
         android:layout_width="30dp"
@@ -39,7 +39,7 @@
         android:text="These are the latest updates on the state of your invoices"/>
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/notificationsRadioGroupBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -48,10 +48,9 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/radioButtonAll"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
-            android:background="@drawable/radio_button_bg"
+            android:background="@drawable/library_radio_group_selector"
             android:button="@null"
             android:checked="false"
             android:padding="10dp"
@@ -61,10 +60,9 @@
             android:textColor="@color/blue" />
 
         <RadioButton
-            android:id="@+id/radioButton1M"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
-            android:background="@drawable/radio_button_bg"
+            android:background="@drawable/library_radio_group_selector"
             android:button="@null"
             android:checked="false"
             android:padding="10dp"
