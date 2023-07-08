@@ -2,23 +2,13 @@ package com.thinkdev.healix.model;
 
 public class ServicesChildModel {
 
-    private int icon;
     private String title, description, amount, time;
 
-    public ServicesChildModel(int icon, String title, String description, String amount, String time) {
-        this.icon = icon;
+    public ServicesChildModel(String title, String description, String amount, String time) {
         this.title = title;
         this.description = description;
         this.amount = amount;
         this.time = time;
-    }
-
-    public int getIcon() {
-        return icon;
-    }
-
-    public void setIcon(int icon) {
-        this.icon = icon;
     }
 
     public String getTitle() {

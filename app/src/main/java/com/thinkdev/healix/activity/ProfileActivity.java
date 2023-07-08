@@ -1,6 +1,7 @@
 package com.thinkdev.healix.activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -98,6 +99,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Edit Bank Details Clicked", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), BankDetailsActivity.class);
+                startActivity(i);
             }
         });
 

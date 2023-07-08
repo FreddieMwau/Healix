@@ -45,6 +45,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue"
             android:id="@+id/firstnameTextInput"
             android:hint="Member Number"
             android:textColorHint="@color/light_blue"
@@ -64,6 +66,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue"
             android:id="@+id/emailTextInput"
             android:hint="Client Names"
             android:textColorHint="@color/light_blue"
@@ -84,6 +88,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue"
             android:id="@+id/idTextInput"
             android:hint="Procedure"
             android:textColorHint="@color/light_blue"
@@ -103,6 +109,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue"
             android:id="@+id/phoneTextInput"
             android:hint="Phone Number"
             android:textColorHint="@color/light_blue"
@@ -138,6 +146,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/passTextInput"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue"
             android:hint="Charge"
             android:textColorHint="@color/light_blue"
             android:layout_marginTop="15dp"

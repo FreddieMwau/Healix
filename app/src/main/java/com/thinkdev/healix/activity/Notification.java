@@ -2,8 +2,12 @@ package com.thinkdev.healix.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +25,7 @@ public class Notification extends AppCompatActivity {
     private ActivityNotificationBinding binding;
     private NotificationsAdapter notificationsAdapter;
     RecyclerView notificationRecycler;
+    RadioGroup notificationRadioGroupBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +35,30 @@ public class Notification extends AppCompatActivity {
 
         notificationRecycler = findViewById(R.id.notificationRecycler);
 
+        notificationRadioGroupBtn =findViewById(R.id.notificationsRadioGroupBtn);
+
+        final int checkedColor = ContextCompat.getColor(getApplicationContext() ,R.color.white);
+        final int uncheckedColor = ContextCompat.getColor(getApplicationContext(), R.color.blue);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         notificationsAdapter = new NotificationsAdapter(NotificationItemList());
         notificationRecycler.setAdapter(notificationsAdapter);
         notificationRecycler.setLayoutManager(linearLayoutManager);
+        notificationRadioGroupBtn.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int count = group.getChildCount();
+                for (int i = 0; i < count; i++){
+                    RadioButton radioButton = (RadioButton) group.getChildAt(i);
+                    if (radioButton.getId() == checkedId){
+                        Toast.makeText(getApplicationContext(), radioButton.getText() + " clicked", Toast.LENGTH_SHORT).show();
+                        radioButton.setTextColor(checkedColor);
+                    } else {
+                        radioButton.setTextColor(uncheckedColor);
+                    }
+                }
+            }
+        });
     }
 
     private List<NotificationParentModel> NotificationItemList() {
