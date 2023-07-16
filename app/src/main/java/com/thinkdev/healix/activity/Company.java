@@ -32,6 +32,7 @@ public class Company extends AppCompatActivity {
     PieChart pieChart;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
