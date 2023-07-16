@@ -7,8 +7,7 @@
         android:color="@color/blue"/>
 
     <size
-        android:width="350dp"
-        android:height="350dp"/>
+        android:width="350dp"/>
 
     <corners android:bottomLeftRadius="20dp"
         android:bottomRightRadius="20dp"/>

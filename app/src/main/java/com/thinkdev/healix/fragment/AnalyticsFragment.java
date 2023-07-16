@@ -1,22 +1,31 @@
 package com.thinkdev.healix.fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.thinkdev.healix.R;
 import com.thinkdev.healix.activity.InvoiceDetails;
 import com.thinkdev.healix.adapter.TransactionAdapter;
@@ -26,13 +35,14 @@ import com.thinkdev.healix.model.TransactionChildModel;
 import com.thinkdev.healix.model.TransactionalModel;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class AnalyticsFragment extends Fragment implements TransactionInterface {
     private FragmentAnalyticsBinding binding;
-    PieChart pieChart;
     private TransactionAdapter transactionAdapter;
     RecyclerView transactionRecycler;
+    CardView filter;
 
     @Override
     public View onCreateView(
@@ -47,40 +57,89 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        pieChart = view.findViewById(R.id.pieChart);
         transactionRecycler = view.findViewById(R.id.analyticsRecycler);
+        filter = view.findViewById(R.id.analytics_filters_card);
 
-        ArrayList<PieEntry> payments = new ArrayList<>();
-        payments.add(new PieEntry(350));
-        payments.add(new PieEntry(780));
-        payments.add(new PieEntry(650));
-
-        PieDataSet pieDataSet = new PieDataSet(payments, "Payments");
-        pieDataSet.setDrawValues(false);
-        pieChart.getLegend().setEnabled(false);
-        pieDataSet.setColors(
-                new int[] {
-                        ContextCompat.getColor(getContext(), R.color.light_yellow),
-                        ContextCompat.getColor(getContext(), R.color.light_blue),
-                        ContextCompat.getColor(getContext(), R.color.white)
-                }
-        );
-        pieDataSet.setValueTextColor(Color.BLACK);
-        pieDataSet.setValueTextSize(16f);
-
-        PieData pieData = new PieData(pieDataSet);
-
-        pieChart.setData(pieData);
-        pieChart.getDescription().setEnabled(false);
-        pieChart.setCenterText("Payment Progress");
-        pieChart.setCenterTextColor(R.color.blue);
-        pieChart.setCenterTextSize(15f);
-        pieChart.animate();
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFilterBottomSheetDialog();
+            }
+        });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         transactionAdapter = new TransactionAdapter(TransactionItemList(), getContext(), this);
         transactionRecycler.setAdapter(transactionAdapter);
         transactionRecycler.setLayoutManager(layoutManager);
+    }
+
+    private void openFilterBottomSheetDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        final int checkedColor = ContextCompat.getColor(requireContext() ,R.color.white);
+        final int uncheckedColor = ContextCompat.getColor(requireContext(), R.color.blue);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.filter_bottom_sheet);
+
+        String[] insurances = {"Sanlam", "Madison", "APA", "Pioneer", "AAR"};
+        Button monthYearBtn = dialog.findViewById(R.id.monthPickerBtn);
+        Button saveFilterBtn = dialog.findViewById(R.id.saveFilterBtn);
+        AutoCompleteTextView filterCompany = dialog.findViewById(R.id.auto_filter_company_txt);
+        ArrayAdapter<String> companyAdapter;
+        RadioGroup statusBtn = dialog.findViewById(R.id.filterRadioGroupBtn);
+
+        companyAdapter = new ArrayAdapter<>(requireContext(),R.layout.insurance_list, insurances);
+        filterCompany.setThreshold(2);
+        filterCompany.setAdapter(companyAdapter);
+
+        MaterialDatePicker datePicker = MaterialDatePicker.Builder
+                .datePicker()
+                .setTitleText("Select month and year")
+                .setTheme(R.style.MaterialCalendarTheme)
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .build();
+
+        monthYearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datePicker.show(getChildFragmentManager(), "Select start date of month");
+                datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+                    @Override
+                    public void onPositiveButtonClick(Object selection) {
+                        monthYearBtn.setText(datePicker.getHeaderText());
+                    }
+                });
+            }
+        });
+
+        statusBtn.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int count = group.getChildCount();
+                for (int i = 0; i < count; i++){
+                    RadioButton radioButton = (RadioButton) group.getChildAt(i);
+                    if (radioButton.getId() == checkedId){
+                        Toast.makeText(requireContext(), radioButton.getText() + " clicked", Toast.LENGTH_SHORT).show();
+                        radioButton.setTextColor(checkedColor);
+                    } else {
+                        radioButton.setTextColor(uncheckedColor);
+                    }
+                }
+            }
+        });
+
+
+        saveFilterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.BottomDialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
     private List<TransactionalModel> TransactionItemList() {

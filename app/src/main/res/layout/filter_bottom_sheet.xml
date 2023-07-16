@@ -16,6 +16,7 @@
         android:textStyle="bold"
         android:textColor="@color/light_grey"/>
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +27,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
         <AutoCompleteTextView
-            android:id="@+id/auto_company_txt"
+            android:id="@+id/auto_filter_company_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"/>
@@ -42,7 +43,7 @@
         android:textStyle="bold"/>
 
     <RadioGroup
-        android:id="@+id/libraryRadioGroupBtn"
+        android:id="@+id/filterRadioGroupBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -112,33 +113,27 @@
         android:id="@+id/monthPickerBtn"
         android:text="Month Picker"
         android:textStyle="bold"
-        android:layout_gravity="center"
         android:textSize="18sp"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
         android:textAllCaps="false"
         android:textColor="@color/blue"
         android:background="@drawable/corner_button"
         android:backgroundTint="@color/light_blue"
-        android:layout_margin="10dp"
-        android:onClick="onclick"/>
+        android:layout_margin="10dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:id="@+id/saveFilterBtn"
         android:text="Save"
         android:textStyle="bold"
         android:layout_gravity="center"
         android:textSize="18sp"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
         android:textAllCaps="false"
         android:textColor="@color/colorBackground"
         android:background="@drawable/corner_button"
         android:backgroundTint="@color/blue"
-        android:layout_margin="10dp"
-        android:onClick="onclick"/>
+        android:layout_margin="30dp"
+        android:layout_marginBottom="20dp"/>
 
 
 </LinearLayout>
