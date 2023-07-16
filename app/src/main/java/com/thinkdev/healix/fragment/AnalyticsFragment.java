@@ -1,10 +1,12 @@
 package com.thinkdev.healix.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -27,22 +30,32 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.thinkdev.healix.R;
+import com.thinkdev.healix.Singleton.FilterDataHolder;
 import com.thinkdev.healix.activity.InvoiceDetails;
+import com.thinkdev.healix.adapter.FilterAdapter;
 import com.thinkdev.healix.adapter.TransactionAdapter;
 import com.thinkdev.healix.databinding.FragmentAnalyticsBinding;
 import com.thinkdev.healix.interfaces.TransactionInterface;
+import com.thinkdev.healix.model.FilterData;
+import com.thinkdev.healix.model.FilterDataModel;
 import com.thinkdev.healix.model.TransactionChildModel;
 import com.thinkdev.healix.model.TransactionalModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class AnalyticsFragment extends Fragment implements TransactionInterface {
     private FragmentAnalyticsBinding binding;
     private TransactionAdapter transactionAdapter;
-    RecyclerView transactionRecycler;
-    CardView filter;
+    private RecyclerView transactionRecycler, filterRecycler;
+    private CardView filter, clearFilter;
+    private LinearLayout filterLayout;
+    private List<FilterDataModel> filterDataList;
+    private FilterAdapter filterAdapter;
 
     @Override
     public View onCreateView(
@@ -59,6 +72,14 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
         super.onViewCreated(view, savedInstanceState);
         transactionRecycler = view.findViewById(R.id.analyticsRecycler);
         filter = view.findViewById(R.id.analytics_filters_card);
+        filterRecycler = view.findViewById(R.id.filtersRecyclerView);
+        filterLayout = view.findViewById(R.id.filterResultLayout);
+        clearFilter = view.findViewById(R.id.clear_filters_card);
+
+        filterDataList = new ArrayList<>();
+        filterAdapter = new FilterAdapter(filterDataList);
+        filterRecycler.setAdapter(filterAdapter);
+        filterRecycler.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,10 +88,65 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
             }
         });
 
+        clearFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearFilter();
+            }
+        });
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         transactionAdapter = new TransactionAdapter(TransactionItemList(), getContext(), this);
         transactionRecycler.setAdapter(transactionAdapter);
         transactionRecycler.setLayoutManager(layoutManager);
+
+        FilterData filterData = FilterDataHolder.getInstance().getFilterData();
+        if (filterData != null && !isFilterDataEmpty(filterData)) {
+            filter.setVisibility(View.GONE);
+            filterRecycler.setVisibility(View.VISIBLE);
+            filterLayout.setVisibility(View.VISIBLE);
+            clearFilter.setVisibility(View.VISIBLE);
+
+            updateFilterData(filterData);
+        }
+    }
+
+    private void clearFilter() {
+        filterDataList.clear();
+        filterAdapter.notifyDataSetChanged();
+
+        filterRecycler.setVisibility(View.GONE);
+        filterLayout.setVisibility(View.GONE);
+        clearFilter.setVisibility(View.GONE);
+        filter.setVisibility(View.VISIBLE);
+
+        FilterDataHolder.getInstance().setFilterData(null);
+        Toast.makeText(requireContext(), "Filters cleared successfully", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isFilterDataEmpty(FilterData filterData) {
+        return  TextUtils.isEmpty(filterData.getCompanyText()) &&
+                TextUtils.isEmpty(filterData.getPaymentStatus()) &&
+                TextUtils.isEmpty(filterData.getMonthYear());
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void updateFilterData(FilterData filterData) {
+        filterDataList.clear();
+
+        // Add the selected filter data to the filterDataList
+        if (!TextUtils.isEmpty(filterData.getCompanyText())) {
+            filterDataList.add(new FilterDataModel("Company",filterData.getCompanyText()));
+        }
+        if (!TextUtils.isEmpty(filterData.getPaymentStatus())) {
+            filterDataList.add(new FilterDataModel("Payment Status", filterData.getPaymentStatus()));
+        }
+        if (!TextUtils.isEmpty(filterData.getMonthYear())) {
+            filterDataList.add(new FilterDataModel("Month/Year", filterData.getMonthYear()));
+        }
+
+        // Notify the adapter that data has changed
+        filterAdapter.notifyDataSetChanged();
     }
 
     private void openFilterBottomSheetDialog() {
@@ -102,10 +178,17 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
             @Override
             public void onClick(View v) {
                 datePicker.show(getChildFragmentManager(), "Select start date of month");
-                datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+                datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
                     @Override
-                    public void onPositiveButtonClick(Object selection) {
-                        monthYearBtn.setText(datePicker.getHeaderText());
+                    public void onPositiveButtonClick(Long selection) {
+                        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+                        calendar.setTimeInMillis(selection);
+                        int selectedYear = calendar.get(Calendar.YEAR);
+                        int selectedMonth = calendar.get(Calendar.MONTH);
+
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM", Locale.getDefault());
+                        String abbreviatedMonth = dateFormat.format(calendar.getTime());
+                        monthYearBtn.setText(abbreviatedMonth + ", " + selectedYear);
                     }
                 });
             }
@@ -131,6 +214,31 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
         saveFilterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String companyText = filterCompany.getText().toString();
+                String paymentStatus = "";
+                int selectedRadioBtn = statusBtn.getCheckedRadioButtonId();
+
+                if (selectedRadioBtn != -1){
+                    RadioButton selecetdStatus = dialog.findViewById(selectedRadioBtn);
+                    paymentStatus = selecetdStatus.getText().toString();
+                }
+
+                String monthYear = monthYearBtn.getText().toString();
+                FilterData filterData = new FilterData(companyText, paymentStatus, monthYear);
+                FilterDataHolder.getInstance().setFilterData(filterData);
+                updateFilterData(filterData);
+
+                if (!isFilterDataEmpty(filterData)){
+                    filter.setVisibility(View.GONE);
+                    filterLayout.setVisibility(View.VISIBLE);
+                    filterRecycler.setVisibility(View.VISIBLE);
+                    clearFilter.setVisibility(View.VISIBLE);
+
+                    updateFilterData(filterData);
+                    FilterDataHolder.getInstance().setFilterData(filterData);
+                } else {
+                    Toast.makeText(requireContext(), "Filter data is empty", Toast.LENGTH_SHORT).show();
+                }
                 dialog.dismiss();
             }
         });
