@@ -4,13 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.thinkdev.healix.R;
 import com.thinkdev.healix.adapter.NotificationAdapter;
 import com.thinkdev.healix.databinding.FragmentNotificationBinding;
 import com.thinkdev.healix.model.NotificationData;
@@ -23,6 +28,7 @@ public class NotificationFragment extends Fragment {
 
     private FragmentNotificationBinding binding;
     private List<NotificationData> data =  new ArrayList<>();
+
 
     @Override
     public View onCreateView(

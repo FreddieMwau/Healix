@@ -43,6 +43,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue"
             android:id="@+id/firstnameTextInput"
             android:hint="Full Names *As in the ID"
             android:textColorHint="@color/light_blue"
@@ -62,6 +64,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue"
             android:id="@+id/emailTextInput"
             android:hint="Email Address"
             android:textColorHint="@color/light_blue"
@@ -82,6 +86,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue"
             android:id="@+id/idTextInput"
             android:hint="ID Number"
             android:textColorHint="@color/light_blue"
@@ -102,6 +108,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue"
             android:id="@+id/phoneTextInput"
             android:hint="Phone Number"
             android:textColorHint="@color/light_blue"
@@ -122,6 +130,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue"
             android:id="@+id/passTextInput"
             android:hint="Password"
             android:textColorHint="@color/light_blue"

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thinkdev.healix.R;
-import com.thinkdev.healix.interfaces.TransactionInterface;
+import com.thinkdev.healix.interfaces.ServiceInterface;
 import com.thinkdev.healix.model.ServicesModel;
 
 import java.util.List;
@@ -20,11 +20,11 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
 
     private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
     private List<ServicesModel> servicesModels;
-    private TransactionInterface transactionInterface;
+    private ServiceInterface serviceInterface;
 
-    public ServiceAdapter(List<ServicesModel> servicesModels, TransactionInterface transactionInterface) {
+    public ServiceAdapter(List<ServicesModel> servicesModels, Context context, ServiceInterface serviceInterface) {
         this.servicesModels = servicesModels;
-        this.transactionInterface = transactionInterface;
+        this.serviceInterface = serviceInterface;
     }
 
     @NonNull
@@ -46,8 +46,14 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
 
         layoutManager.setInitialPrefetchItemCount(servicesModel.getChildModelList().size());
 
+//        ServiceChildAdapter childAdapter = new ServiceChildAdapter(servicesModel.getChildModelList());
+//        childAdapter.setOnServiceClickListener(serviceInterface);
+//        holder.transactionRecycler.setLayoutManager(layoutManager);
+//        holder.transactionRecycler.setAdapter(childAdapter);
+//        holder.transactionRecycler.setRecycledViewPool(viewPool);
+
         ServicesChildAdapter childAdapter = new ServicesChildAdapter(servicesModel.getChildModelList());
-        childAdapter.setOnItemClickListener(transactionInterface);
+        childAdapter.setOnItemClickListener(serviceInterface);
         holder.transactionRecycler.setLayoutManager(layoutManager);
         holder.transactionRecycler.setAdapter(childAdapter);
         holder.transactionRecycler.setRecycledViewPool(viewPool);
