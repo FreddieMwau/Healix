@@ -32,13 +32,15 @@ public class Company extends AppCompatActivity {
     PieChart pieChart;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityCompanyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        companyAdapter = new ArrayAdapter<>(this,R.layout.insurance_list, insurances);
         companyTextView = findViewById(R.id.auto_company_txt);
+        companyTextView.setAdapter(companyAdapter);
         pieChart = findViewById(R.id.insurancePieChart);
 
 
