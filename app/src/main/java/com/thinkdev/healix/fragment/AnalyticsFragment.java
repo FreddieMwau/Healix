@@ -1,6 +1,7 @@
 package com.thinkdev.healix.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,6 +49,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
+
+import www.sanju.motiontoast.MotionToast;
+import www.sanju.motiontoast.MotionToastStyle;
 
 public class AnalyticsFragment extends Fragment implements TransactionInterface {
     private FragmentAnalyticsBinding binding;
@@ -92,6 +97,13 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
             @Override
             public void onClick(View v) {
                 clearFilter();
+                MotionToast.Companion.createToast((Activity) requireContext(),
+                        "Success",
+                        "Filters cleared successfully",
+                        MotionToastStyle.SUCCESS,
+                        MotionToast.GRAVITY_TOP,
+                        MotionToast.SHORT_DURATION,
+                        ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular));
             }
         });
 
@@ -121,7 +133,6 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
         filter.setVisibility(View.VISIBLE);
 
         FilterDataHolder.getInstance().setFilterData(null);
-        Toast.makeText(requireContext(), "Filters cleared successfully", Toast.LENGTH_SHORT).show();
     }
 
     private boolean isFilterDataEmpty(FilterData filterData) {
@@ -214,6 +225,14 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
         saveFilterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MotionToast.Companion.createToast((Activity) requireContext(),
+                        "Success",
+                        "Filters saved successfully",
+                        MotionToastStyle.SUCCESS,
+                        MotionToast.GRAVITY_BOTTOM,
+                        MotionToast.SHORT_DURATION,
+                        ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular));
+
                 String companyText = filterCompany.getText().toString();
                 String paymentStatus = "";
                 int selectedRadioBtn = statusBtn.getCheckedRadioButtonId();
