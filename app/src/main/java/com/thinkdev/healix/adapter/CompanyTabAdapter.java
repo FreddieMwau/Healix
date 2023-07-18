@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.thinkdev.healix.fragment.HistoryFragment;
-import com.thinkdev.healix.fragment.InvoicesFragment;
+import com.thinkdev.healix.fragment.InvoicePaymentsFragment;
 
 public class CompanyTabAdapter extends FragmentStateAdapter {
 
@@ -21,7 +21,7 @@ public class CompanyTabAdapter extends FragmentStateAdapter {
             case 0:
                 return new HistoryFragment();
             case 1:
-                return new InvoicesFragment();
+//                return new InvoicesFragment();
             default:
                 return new HistoryFragment();
         }
