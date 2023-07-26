@@ -67,10 +67,8 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-
         binding = FragmentAnalyticsBinding.inflate(inflater, container, false);
         return binding.getRoot();
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -97,11 +95,11 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
             @Override
             public void onClick(View v) {
                 clearFilter();
-                MotionToast.Companion.createToast((Activity) requireContext(),
+                MotionToast.Companion.darkToast((Activity) requireContext(),
                         "Success",
                         "Filters cleared successfully",
                         MotionToastStyle.SUCCESS,
-                        MotionToast.GRAVITY_TOP,
+                        MotionToast.GRAVITY_BOTTOM,
                         MotionToast.SHORT_DURATION,
                         ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular));
             }
@@ -195,7 +193,6 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
                         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
                         calendar.setTimeInMillis(selection);
                         int selectedYear = calendar.get(Calendar.YEAR);
-                        int selectedMonth = calendar.get(Calendar.MONTH);
 
                         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM", Locale.getDefault());
                         String abbreviatedMonth = dateFormat.format(calendar.getTime());
@@ -225,7 +222,7 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
         saveFilterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MotionToast.Companion.createToast((Activity) requireContext(),
+                MotionToast.Companion.darkToast((Activity) requireContext(),
                         "Success",
                         "Filters saved successfully",
                         MotionToastStyle.SUCCESS,

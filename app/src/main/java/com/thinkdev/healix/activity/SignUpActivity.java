@@ -27,7 +27,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
     public void onclick(View view) {
-        MotionToast.Companion.createToast(this,
+        MotionToast.Companion.darkToast(this,
                 "Success",
                 "Signed Up successfully",
                 MotionToastStyle.SUCCESS,

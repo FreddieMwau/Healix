@@ -26,7 +26,7 @@ public class ForgotActivity extends AppCompatActivity {
     }
 
     public void onForgotBtnClicked(View view) {
-        MotionToast.Companion.createToast(this,
+        MotionToast.Companion.darkToast(this,
                 "Success",
                 "Password reset successfully",
                 MotionToastStyle.SUCCESS,

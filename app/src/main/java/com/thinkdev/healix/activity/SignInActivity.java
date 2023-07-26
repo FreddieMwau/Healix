@@ -28,7 +28,7 @@ public class SignInActivity extends AppCompatActivity {
 
     }
     public void onclick(View view) {
-        MotionToast.Companion.createToast(this,
+        MotionToast.Companion.darkToast(this,
                 "Success",
                 "Logged In successfully",
                 MotionToastStyle.SUCCESS,
