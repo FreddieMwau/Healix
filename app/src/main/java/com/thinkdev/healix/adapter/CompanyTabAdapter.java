@@ -5,11 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.thinkdev.healix.fragment.HistoryFragment;
-import com.thinkdev.healix.fragment.InvoicePaymentsFragment;
+import com.thinkdev.healix.fragment.InvoicesCompanyFragment;
+import com.thinkdev.healix.fragment.PaymentHistoryFragment;
 
 public class CompanyTabAdapter extends FragmentStateAdapter {
-
     public CompanyTabAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
@@ -19,11 +18,11 @@ public class CompanyTabAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new HistoryFragment();
+                return new PaymentHistoryFragment();
             case 1:
-//                return new InvoicesFragment();
+                return new InvoicesCompanyFragment();
             default:
-                return new HistoryFragment();
+                return new PaymentHistoryFragment();
         }
     }
 
