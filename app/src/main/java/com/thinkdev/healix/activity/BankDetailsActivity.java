@@ -63,6 +63,13 @@ public class BankDetailsActivity extends AppCompatActivity {
                 MotionToast.GRAVITY_BOTTOM,
                 MotionToast.SHORT_DURATION,
                 ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular));
+        MotionToast.Companion.darkToast(this,
+                "Success",
+                "Bank details saved successfully",
+                MotionToastStyle.SUCCESS,
+                MotionToast.GRAVITY_BOTTOM,
+                MotionToast.SHORT_DURATION,
+                ResourcesCompat.getFont(this, www.sanju.motiontoast.R.font.helvetica_regular));
 
         Intent i = new Intent(BankDetailsActivity.this, MainActivity2.class);
 
