@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/whitesmoke"
+    android:layout_height="match_parent"
+    tools:context=".fragment.PaymentHistoryFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="@color/white"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:cardCornerRadius="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/paymentHistoryRadioGroupBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/library_radio_group_selector"
+                    android:button="@android:color/transparent"
+                    android:checked="false"
+                    android:padding="10dp"
+                    android:text="1W"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/blue"/>
+
+                <RadioButton
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/library_radio_group_selector"
+                    android:button="@null"
+                    android:checked="false"
+                    android:padding="10dp"
+                    android:text="1M"
+                    android:layout_marginEnd="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"/>
+
+                <RadioButton
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/library_radio_group_selector"
+                    android:button="@null"
+                    android:checked="false"
+                    android:padding="10dp"
+                    android:text="6M"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/blue"/>
+
+                <RadioButton
+                    android:layout_width="38dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/library_radio_group_selector"
+                    android:button="@null"
+                    android:checked="false"
+                    android:padding="10dp"
+                    android:text="1Y"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/blue"/>
+
+            </RadioGroup>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:id="@+id/payment_history_bar_chart"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
