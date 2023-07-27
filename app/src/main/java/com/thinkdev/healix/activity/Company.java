@@ -55,6 +55,7 @@ public class Company extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 viewPager;
     CompanyTabAdapter tabAdapter;
+    private int invoiceFragmentIndex;
 
 
     @Override
@@ -63,6 +64,7 @@ public class Company extends AppCompatActivity {
         binding = ActivityCompanyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        invoiceFragmentIndex = 1;
         filterBtn = findViewById(R.id.company_filters_card);
         clearBtn = findViewById(R.id.clear_company_filters_card);
         filterRecycler = findViewById(R.id.companyFiltersRecyclerView);
@@ -225,6 +227,11 @@ public class Company extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Filter data is empty", Toast.LENGTH_SHORT).show();
                 }
+
+                if (viewPager.getCurrentItem() != invoiceFragmentIndex) {
+                    viewPager.setCurrentItem(invoiceFragmentIndex, true);
+                }
+
                 dialog.dismiss();
             }
         });
