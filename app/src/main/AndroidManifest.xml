@@ -54,9 +54,6 @@
             android:name=".activity.NewServicesActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.DailogeActivity"
-            android:exported="true" />
-        <activity
             android:name=".activity.ForgotActivity"
             android:exported="true" />
     </application>
