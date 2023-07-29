@@ -16,27 +16,27 @@ import com.thinkdev.healix.model.ServicesModel;
 
 import java.util.List;
 
-public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder> {
+public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ServicesViewHolder> {
 
     private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
-    private List<ServicesModel> servicesModels;
+    private List<ServicesModel> servicesModelList;
     private ServiceInterface serviceInterface;
 
-    public ServiceAdapter(List<ServicesModel> servicesModels, Context context, ServiceInterface serviceInterface) {
-        this.servicesModels = servicesModels;
+    public ServicesAdapter(List<ServicesModel> servicesModelList, Context context, ServiceInterface serviceInterface) {
+        this.servicesModelList = servicesModelList;
         this.serviceInterface = serviceInterface;
     }
 
     @NonNull
     @Override
-    public ServiceAdapter.ServiceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ServicesAdapter.ServicesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_group_card, parent, false);
-        return new ServiceAdapter.ServiceViewHolder(view);
+        return new ServicesViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ServiceAdapter.ServiceViewHolder holder, int position) {
-        ServicesModel servicesModel = servicesModels.get(position);
+    public void onBindViewHolder(@NonNull ServicesAdapter.ServicesViewHolder holder, int position) {
+        ServicesModel servicesModel = servicesModelList.get(position);
         holder.transactionDate.setText(servicesModel.getDate());
         holder.transactionDay.setText(servicesModel.getDay());
         holder.transactionMonth.setText(servicesModel.getMonth());
@@ -44,30 +44,25 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(holder.transactionRecycler.getContext(), LinearLayoutManager.VERTICAL, false);
 
-        layoutManager.setInitialPrefetchItemCount(servicesModel.getChildModelList().size());
+        layoutManager.setInitialPrefetchItemCount(servicesModel.getChildItemList().size());
 
-//        ServiceChildAdapter childAdapter = new ServiceChildAdapter(servicesModel.getChildModelList());
-//        childAdapter.setOnServiceClickListener(serviceInterface);
-//        holder.transactionRecycler.setLayoutManager(layoutManager);
-//        holder.transactionRecycler.setAdapter(childAdapter);
-//        holder.transactionRecycler.setRecycledViewPool(viewPool);
-
-        ServicesChildAdapter childAdapter = new ServicesChildAdapter(servicesModel.getChildModelList());
-        childAdapter.setOnItemClickListener(serviceInterface);
+        ServicesChildAdapter servicesChildAdapter = new ServicesChildAdapter(servicesModel.getChildItemList());
+        servicesChildAdapter.setOnItemClickListener(serviceInterface);
         holder.transactionRecycler.setLayoutManager(layoutManager);
-        holder.transactionRecycler.setAdapter(childAdapter);
+        holder.transactionRecycler.setAdapter(servicesChildAdapter);
         holder.transactionRecycler.setRecycledViewPool(viewPool);
+
     }
 
     @Override
     public int getItemCount() {
-        return servicesModels.size();
+        return servicesModelList.size();
     }
 
-    public class ServiceViewHolder extends RecyclerView.ViewHolder {
+    public class ServicesViewHolder extends RecyclerView.ViewHolder {
         private TextView transactionDate, transactionDay, transactionMonth, transactionTotal;
         private RecyclerView transactionRecycler;
-        public ServiceViewHolder(@NonNull View itemView) {
+        public ServicesViewHolder(@NonNull View itemView) {
             super(itemView);
             transactionDate = itemView.findViewById(R.id.transactionDate);
             transactionDay = itemView.findViewById(R.id.transactionDay);

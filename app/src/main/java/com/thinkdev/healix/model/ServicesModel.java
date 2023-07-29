@@ -4,14 +4,14 @@ import java.util.List;
 
 public class ServicesModel {
     private String date, day, month, amount;
-    private List<ServicesChildModel> childModelList;
+    private List<ServicesChildModel> childItemList;
 
-    public ServicesModel(String date, String day, String month, String amount, List<ServicesChildModel> childModelList) {
+    public ServicesModel(String date, String day, String month, String amount, List<ServicesChildModel> childItemList) {
         this.date = date;
         this.day = day;
         this.month = month;
         this.amount = amount;
-        this.childModelList = childModelList;
+        this.childItemList = childItemList;
     }
 
     public String getDate() {
@@ -46,11 +46,11 @@ public class ServicesModel {
         this.amount = amount;
     }
 
-    public List<ServicesChildModel> getChildModelList() {
-        return childModelList;
+    public List<ServicesChildModel> getChildItemList() {
+        return childItemList;
     }
 
-    public void setChildModelList(List<ServicesChildModel> childModelList) {
-        this.childModelList = childModelList;
+    public void setChildItemList(List<ServicesChildModel> childItemList) {
+        this.childItemList = childItemList;
     }
 }

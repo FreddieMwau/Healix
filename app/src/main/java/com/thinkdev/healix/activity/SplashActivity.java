@@ -23,8 +23,6 @@ public class SplashActivity extends AppCompatActivity {
 
         binding = ActivitySplashBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
 
         new Handler().postDelayed(new Runnable() {
 
