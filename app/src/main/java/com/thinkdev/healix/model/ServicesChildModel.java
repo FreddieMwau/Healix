@@ -1,45 +1,44 @@
 package com.thinkdev.healix.model;
 
 public class ServicesChildModel {
+    private String serviceTitle, serviceDescription, serviceTime, serviceAmount;
 
-    private String title, description, amount, time;
-
-    public ServicesChildModel(String title, String description, String amount, String time) {
-        this.title = title;
-        this.description = description;
-        this.amount = amount;
-        this.time = time;
+    public ServicesChildModel(String serviceTitle, String serviceDescription, String serviceTime, String serviceAmount) {
+        this.serviceTitle = serviceTitle;
+        this.serviceDescription = serviceDescription;
+        this.serviceTime = serviceTime;
+        this.serviceAmount = serviceAmount;
     }
 
-    public String getTitle() {
-        return title;
+    public String getServiceTitle() {
+        return serviceTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setServiceTitle(String serviceTitle) {
+        this.serviceTitle = serviceTitle;
     }
 
-    public String getDescription() {
-        return description;
+    public String getServiceDescription() {
+        return serviceDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setServiceDescription(String serviceDescription) {
+        this.serviceDescription = serviceDescription;
     }
 
-    public String getAmount() {
-        return amount;
+    public String getServiceTime() {
+        return serviceTime;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
+    public void setServiceTime(String serviceTime) {
+        this.serviceTime = serviceTime;
     }
 
-    public String getTime() {
-        return time;
+    public String getServiceAmount() {
+        return serviceAmount;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setServiceAmount(String serviceAmount) {
+        this.serviceAmount = serviceAmount;
     }
 }

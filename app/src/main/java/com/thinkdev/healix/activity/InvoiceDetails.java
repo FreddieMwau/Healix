@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -83,10 +84,59 @@ public class InvoiceDetails extends AppCompatActivity {
 
     public void onEditIconClicked(View view) {
         Toast.makeText(getApplicationContext(), "Edit Invoice clicked", Toast.LENGTH_SHORT).show();
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.edit_service_bottom_sheet);
+
+        LinearLayout image = dialog.findViewById(R.id.serviceLayout);
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), NewServicesActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.BottomDialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
     public void onDeleteIconClicked(View view) {
         Toast.makeText(getApplicationContext(), "Delete Invoice clicked", Toast.LENGTH_SHORT).show();
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.delete_bottom_sheet);
+
+        Button yesBtn, noBtn;
+
+        yesBtn = dialog.findViewById(R.id.yesBtn);
+        noBtn = dialog.findViewById(R.id.noBtn);
+
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(InvoiceDetails.this, "No choice clicked", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(InvoiceDetails.this, "Yes choice clicked", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.BottomDialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
     public void onAddIconClicked(View view) {

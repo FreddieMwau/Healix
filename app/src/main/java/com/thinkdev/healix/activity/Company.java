@@ -32,7 +32,6 @@ import com.thinkdev.healix.adapter.CompanyTabAdapter;
 import com.thinkdev.healix.adapter.FilterAdapter;
 import com.thinkdev.healix.databinding.ActivityCompanyBinding;
 import com.thinkdev.healix.model.CompanyDataFilter;
-import com.thinkdev.healix.model.FilterData;
 import com.thinkdev.healix.model.FilterDataModel;
 
 import java.text.SimpleDateFormat;
