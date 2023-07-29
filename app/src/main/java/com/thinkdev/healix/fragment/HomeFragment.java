@@ -81,11 +81,8 @@ public class HomeFragment extends Fragment implements TransactionInterface{
 
         BarDataSet barDataSet = new BarDataSet(barEntries, "Weekly Payments");
         barDataSet.setColors(
-            new int[]
-                {
-                        ContextCompat.getColor(getContext(), R.color.light_blue),
-                        ContextCompat.getColor(getContext(), R.color.light_yellow)
-                });
+                ContextCompat.getColor(getContext(), R.color.light_blue),
+                ContextCompat.getColor(getContext(), R.color.light_yellow));
         barDataSet.setDrawValues(false);
         barChart.setData(new BarData(barDataSet));
         barChart.animateY(5000);
