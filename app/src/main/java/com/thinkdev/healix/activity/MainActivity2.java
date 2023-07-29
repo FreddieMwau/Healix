@@ -10,7 +10,6 @@ import com.thinkdev.healix.R;
 import com.thinkdev.healix.databinding.ActivityMain2Binding;
 import com.thinkdev.healix.fragment.HomeFragment;
 import com.thinkdev.healix.fragment.AnalyticsFragment;
-import com.thinkdev.healix.fragment.NotificationFragment;
 import com.thinkdev.healix.fragment.LibraryFragment;
 
 
@@ -27,7 +26,6 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         HomeFragment homeFragment = new HomeFragment();
-       NotificationFragment notificationFragment = new NotificationFragment();
        AnalyticsFragment analyticsFragment = new AnalyticsFragment();
        LibraryFragment libraryFragment = new LibraryFragment();
 
