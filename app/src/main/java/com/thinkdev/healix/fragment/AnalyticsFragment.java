@@ -33,6 +33,7 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.thinkdev.healix.R;
 import com.thinkdev.healix.Singleton.FilterDataHolder;
+import com.thinkdev.healix.activity.Company;
 import com.thinkdev.healix.activity.InvoiceDetails;
 import com.thinkdev.healix.adapter.FilterAdapter;
 import com.thinkdev.healix.adapter.TransactionAdapter;
@@ -150,7 +151,7 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
         if (!TextUtils.isEmpty(filterData.getPaymentStatus())) {
             filterDataList.add(new FilterDataModel("Payment Status", filterData.getPaymentStatus()));
         }
-        if (!TextUtils.isEmpty(filterData.getMonthYear())) {
+        if (!TextUtils.isEmpty(filterData.getMonthYear()) && !filterData.getMonthYear().equals("Month Picker")) {
             filterDataList.add(new FilterDataModel("Month/Year", filterData.getMonthYear()));
         }
 
@@ -171,6 +172,8 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
         AutoCompleteTextView filterCompany = dialog.findViewById(R.id.auto_filter_company_txt);
         ArrayAdapter<String> companyAdapter;
         RadioGroup statusBtn = dialog.findViewById(R.id.filterRadioGroupBtn);
+
+        monthYearBtn.setText(R.string.month_picker);
 
         companyAdapter = new ArrayAdapter<>(requireContext(),R.layout.insurance_list, insurances);
         filterCompany.setThreshold(2);
@@ -253,7 +256,13 @@ public class AnalyticsFragment extends Fragment implements TransactionInterface 
                     updateFilterData(filterData);
                     FilterDataHolder.getInstance().setFilterData(filterData);
                 } else {
-                    Toast.makeText(requireContext(), "Filter data is empty", Toast.LENGTH_SHORT).show();
+                    MotionToast.Companion.darkToast((Activity) requireContext(),
+                            "Filters",
+                            "No filter options were selected",
+                            MotionToastStyle.SUCCESS,
+                            MotionToast.GRAVITY_BOTTOM,
+                            MotionToast.SHORT_DURATION,
+                            ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular));
                 }
                 dialog.dismiss();
             }
