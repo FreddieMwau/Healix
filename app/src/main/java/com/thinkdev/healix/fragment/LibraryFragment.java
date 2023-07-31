@@ -27,6 +27,7 @@ import com.thinkdev.healix.activity.InvoiceDetails;
 import com.thinkdev.healix.activity.NewInvoiceActivity;
 import com.thinkdev.healix.activity.Notification;
 import com.thinkdev.healix.activity.ProfileActivity;
+import com.thinkdev.healix.activity.Search;
 import com.thinkdev.healix.adapter.TransactionAdapter;
 import com.thinkdev.healix.databinding.FragmentLibraryBinding;
 import com.thinkdev.healix.interfaces.TransactionInterface;
@@ -108,6 +109,14 @@ public class LibraryFragment extends Fragment implements TransactionInterface {
                         radioButton.setTextColor(uncheckedColor);
                     }
                 }
+            }
+        });
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), Search.class);
+                startActivity(i);
             }
         });
     }
