@@ -1,5 +1,6 @@
 package com.thinkdev.healix.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -55,7 +56,6 @@ public class Company extends AppCompatActivity {
     ViewPager2 viewPager;
     CompanyTabAdapter tabAdapter;
     private int invoiceFragmentIndex;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,6 +148,7 @@ public class Company extends AppCompatActivity {
         Button saveFilterBtn = dialog.findViewById(R.id.companySaveFilterBtn);
         RadioGroup statusBtn = dialog.findViewById(R.id.companyFiltersRadioGroupStatusBtn);
 
+        monthYearBtn.setText(R.string.month_picker);
 
         MaterialDatePicker datePicker = MaterialDatePicker.Builder
                 .datePicker()
@@ -224,7 +225,13 @@ public class Company extends AppCompatActivity {
                     updateCompanyFilterData(companyDataFilter);
                     CompanyFilterDataHolder.getInstance().setCompanyDataFilter(companyDataFilter);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Filter data is empty", Toast.LENGTH_SHORT).show();
+                    MotionToast.Companion.darkToast(Company.this,
+                            "Filters",
+                            "No filter options were selected",
+                            MotionToastStyle.SUCCESS,
+                            MotionToast.GRAVITY_BOTTOM,
+                            MotionToast.SHORT_DURATION,
+                            ResourcesCompat.getFont(getApplicationContext(), www.sanju.motiontoast.R.font.helvetica_regular));
                 }
 
                 if (viewPager.getCurrentItem() != invoiceFragmentIndex) {
@@ -253,7 +260,7 @@ public class Company extends AppCompatActivity {
         if (!TextUtils.isEmpty(companyDataFilter.getPaymentStatus())) {
             filterDataList.add(new FilterDataModel("Payment Status", companyDataFilter.getPaymentStatus()));
         }
-        if (!TextUtils.isEmpty(companyDataFilter.getMonthYear())) {
+        if (!TextUtils.isEmpty(companyDataFilter.getMonthYear()) && !companyDataFilter.getMonthYear().equals("Month Picker")) {
             filterDataList.add(new FilterDataModel("Month/Year", companyDataFilter.getMonthYear()));
         }
 
