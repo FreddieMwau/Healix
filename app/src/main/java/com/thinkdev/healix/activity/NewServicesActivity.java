@@ -3,10 +3,15 @@ package com.thinkdev.healix.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.thinkdev.healix.R;
 import com.thinkdev.healix.databinding.ActivityNewservicesBinding;
 
 import www.sanju.motiontoast.MotionToast;
@@ -16,6 +21,9 @@ public class NewServicesActivity extends AppCompatActivity {
 
 
     private ActivityNewservicesBinding binding;
+    EditText member, client, procedure, clientNumber, charge;
+    AutoCompleteTextView genderType;
+    Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +31,20 @@ public class NewServicesActivity extends AppCompatActivity {
         binding = ActivityNewservicesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        member = findViewById(R.id.memberEdittext);
+        client = findViewById(R.id.clientEdittext);
+        procedure = findViewById(R.id.procedureEdittext);
+        clientNumber = findViewById(R.id.clientPhoneEdittext);
+        genderType = findViewById(R.id.gender_type_edit_text);
+        charge = findViewById(R.id.chargeEdittext);
+        submit = findViewById(R.id.serviceSubmitBtn);
+
+        String[] genders = {"Male", "Female"};
+        ArrayAdapter<String> genderAdapter;
+
+        genderAdapter = new ArrayAdapter<>(this, R.layout.insurance_list, genders);
+        genderType.setThreshold(2);
+        genderType.setAdapter(genderAdapter);
 
     }
     public void onclick(View view) {

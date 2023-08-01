@@ -3,6 +3,9 @@ package com.thinkdev.healix.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -26,6 +29,9 @@ public class BankDetailsActivity extends AppCompatActivity {
 
     private ActivityBankdetailsBinding binding;
     RadioGroup bankRadioGroupBtn;
+    EditText bankName, accountNo, kraPin;
+    CheckBox termsConditions;
+    Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,11 @@ public class BankDetailsActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         bankRadioGroupBtn = findViewById(R.id.bankDetailsRadioGroupBtn);
+        bankName = findViewById(R.id.bankEdittext);
+        accountNo = findViewById(R.id.accountNoEdittext);
+        kraPin = findViewById(R.id.kraPinEdittext);
+        termsConditions = findViewById(R.id.termsConditionsCheckBox);
+        submit = findViewById(R.id.bankDetailsSubmitBtn);
 
         final int checkedColor = ContextCompat.getColor(getApplicationContext() ,R.color.white);
         final int uncheckedColor = ContextCompat.getColor(getApplicationContext(), R.color.blue);

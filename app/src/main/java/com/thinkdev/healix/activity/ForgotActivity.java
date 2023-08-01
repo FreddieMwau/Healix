@@ -3,10 +3,13 @@ package com.thinkdev.healix.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.thinkdev.healix.R;
 import com.thinkdev.healix.databinding.ActivityForgotBinding;
 
 import www.sanju.motiontoast.MotionToast;
@@ -16,6 +19,8 @@ public class ForgotActivity extends AppCompatActivity {
 
 
     private ActivityForgotBinding binding;
+    EditText email, phoneNo;
+    Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,10 @@ public class ForgotActivity extends AppCompatActivity {
 
         binding = ActivityForgotBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        email = findViewById(R.id.forgotEmailEdittext);
+        phoneNo = findViewById(R.id.forgotPhoneNoEdittext);
+        submit = findViewById(R.id.forgotSubmitBtn);
     }
 
     public void onForgotBtnClicked(View view) {
