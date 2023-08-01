@@ -15,7 +15,6 @@ public class SplashActivity extends AppCompatActivity {
 
 
     private ActivitySplashBinding binding;
-    MotionLayout motionLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

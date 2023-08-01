@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue"
+        android:background="@drawable/top_bg"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/submitBtn"
+        android:id="@+id/otpSubmitBtn"
         android:text="Next"
         android:textStyle="bold"
         android:layout_gravity="center"
